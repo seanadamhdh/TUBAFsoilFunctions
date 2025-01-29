@@ -11,7 +11,6 @@
 #' @import tidyverse
 #' @import DescTools
 #' @import e1071
-#' @import package
 #'
 #' @export
 evaluate_model_adjusted<-function (data, obs="obs", pred="pred")
