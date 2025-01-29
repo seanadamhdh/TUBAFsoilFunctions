@@ -1,28 +1,4 @@
 
-#
-# if(!require(tidyverse)){
-#   install.packages("tidyverse")
-#   require(tidyverse)
-# }
-# if(!require(simplerspec)){
-#   install_github("https://github.com/philipp-baumann/simplerspec.git")
-#   require(simplerspec)}
-# if(!require(prospectr)){
-#   #install_packages("prospectr")
-#   install_github("https://github.com/l-ramirez-lopez/prospectr.git")
-#   require(prospectr)
-# }
-# # only needed for interactive plots
-# if(!require(plotly)){
-#   install.packages("plotly")
-#   require(plotly)}
-#
-
-
-
-
-
-##############################################################################################################################################################################################
 #' @title Load and pre-process OPUS raw spectra files (file.O)
 #'
 #' @description
@@ -56,9 +32,8 @@
 #' @import resemble
 #' @returns If save_raw=T and reload=F, the initially read-in raw opus files are saved after gathering  (details see simplerspec documentation) them as a rds object in save_location as raw_spc.
 #' @returns If save=T, the final object containing the differently pre-processed spectra sets is saved in save_location as spc_data.
-#' @returns If return=T, the final object containing the differently pre-processed spectra is returned.
-
-
+#' @returns If return=T, the final object containing the differently pre-processed spectra is
+#' @export
 OPUSraw_to_Preprocessed<-function(
     folder="../../1_raw_scans/scans_main", #!!!<-path to folder that contains the spectra
     save_location="./temp",#!!!<-path to whereever you want to save tables / in-between saves etc.
@@ -280,9 +255,11 @@ OPUSraw_to_Preprocessed<-function(
   }
 }
 
-##############################################################################################################################################################################################
 
-######### BONUS: spectra plotter ########
+
+
+
+
 
 
 #' @title Spectra plotter
@@ -302,7 +279,7 @@ OPUSraw_to_Preprocessed<-function(
 #' @param leg_pos legend position arg. handed to ggplot legend.position
 #' @import plotly
 #' @import tidyverse
-#'
+#' @export
 spectra_plotter<-function(
     dataset, #<-a tibble / dataframe with the nested spectra matrices, as we created above
     spc_id="spc_rs",#<-the spectra set / matrix you want to plot (as string)

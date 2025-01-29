@@ -1,12 +1,6 @@
 
 
 
-source(paste0(root_dir,"/GitHub/R_main/R_main/packages.R"))
-source(paste0(root_dir,"/GitHub/R_main/R_main/load_PriEco8800.R"))
-if(!require(useful)){
-  install.packages("useful")
-  require(useful)
-}
 
 
 #' @title load_SEMACHv3_file
@@ -16,8 +10,7 @@ if(!require(useful)){
 #' @param path A file path to a SEMACHv3 .csv measurement file.
 #' @returns Formatted raw SEMACHv3 measurement file
 #' @import tidyverse
-#'
-#'
+#' @export
 load_SEMACHv3_file=function(path){
   return(
     ((read_delim(path,delim = ";", escape_double = FALSE, trim_ws = TRUE,show_col_types = FALSE))[-1,])%>%
@@ -51,8 +44,7 @@ load_SEMACHv3_file=function(path){
 #'
 #' @returns Formatted raw SEMACHv3 measurement files as a tibble. File name is used as ID.
 #' @import tidyverse
-#'
-
+#' @export
 load_SEMACHv3_raw=function(path){
 
 
@@ -89,8 +81,8 @@ load_SEMACHv3_raw=function(path){
 #'
 #' @returns Formatted raw SEMACHv3 measurement file
 #'
-#'@import tidyverse
-
+#' @import tidyverse
+#' @export
 eval_SEMACHv3=function(path,
                        height_offset=0,
                        SCD30_scaling=1.129,

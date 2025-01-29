@@ -15,6 +15,7 @@
 #' @param m_x The mass of the solution in grams. E.g., for 10L of water, m_x is approximately 10e4 g. Default is 10e3 (1L)
 #'
 #' @returns Amount of (pure) tracer that needs to be added in grams.
+#' @export
 #'
 spike_with=function(
     delta_x,

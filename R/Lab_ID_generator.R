@@ -4,8 +4,9 @@
 #' @param dataset Either vector or data.frame / tibble structure. length(dataset) or nrwo(dataset) ID labels will be created respectively.
 #' @param origin Set an initial string which will be identical for all ID.
 #' @param digits Total number of digits of the ID, including origin.
-#' @import tidyverse
 #' @returns Vector of ID strings corresponding to each entry (vector) or row (tibble) of dataset.
+#' @import tidyverse
+#' @export
 label_creator<-function(dataset,origin="X",digits=4){
   fillable<-digits-str_length(origin)
 

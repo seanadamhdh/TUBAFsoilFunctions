@@ -10,6 +10,10 @@
 #' @param trans_rev Optional function to reverse transformation. 'none' will do nothing.
 #' If not specified, function will catch trans_rev from models$...$documentation$trans_rev
 #'
+#' @import progress
+#' @import tidyverse
+#'
+#' @export
 val_train_size=function(models,trans_rev=NULL){
 
 
@@ -60,6 +64,8 @@ val_train_size=function(models,trans_rev=NULL){
 #' Model accuracy is calculated for each created model using the hold-out test set.
 #' Can be used to assess effect of sample size on model performance. Should support most (numeric) regression models implemented in caret (no guarantees though - not tested)
 #'
+#' @note In future, extract kmeans sampling function as standalone
+#'
 #' @param data Dataset for model calibration. Can be tibble or dataframe. Must contain column Yr and column or nested tibble/data.frame/matrix Xr.
 #' @param Xr="spc_sg_snv_rs4" Predictor variable(s). Vector column or nested tibble/data.frame/matrix.Will be converted into nested matrix.
 #' @param Yr="TOC" Target variable. Currently only single column supported.
@@ -81,7 +87,12 @@ val_train_size=function(models,trans_rev=NULL){
 #' @returns If return_all = TRUE, returns object containing a list 'models' with all calibrated models (caret::train object with additional details appended to object$documentation)
 #' and val_stats containing evaluation metrics. !!! CURRENTLY USES LOCAL FUNCTION from evaluate_model_adjusted.R
 #'
+#' @import tidyverse
+#' @import caret
+#' @import prospectr
+#' @import progress
 #'
+#' @export
 train_sample_size <- function(data,
                               Xr="spc_sg_snv_rs4",
                               Yr="TOC",

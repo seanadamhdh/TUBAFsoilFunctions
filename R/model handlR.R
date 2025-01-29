@@ -17,7 +17,7 @@
 #' @param metric evaluation statistic which is used to select best model
 #' @param maximise Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.
 #' @import tidyverse
-#'
+#' @export
 get_best=function(model_eval,
                   prefix="cubist_",
                   variable_="CORG",
@@ -48,7 +48,7 @@ get_best=function(model_eval,
 #' @import resemble
 #' @import caret
 #' @import pls
-#'
+#' @export
 predict_variable=function(
     target_data,
     model_folder,
@@ -233,6 +233,8 @@ predict_variable=function(
 #' Batch model runs evaluation aggregation
 #' Currently only supports testset data (no gt300)
 #'
+#' @note evaluate_model_adjusted source path is legacy. Change in future
+#'
 #' @param root_dir Root directory to Project
 #' @param model_folder Folder containing model objects
 #' @param model_type_pattern prefix of model object names
@@ -240,7 +242,8 @@ predict_variable=function(
 #' @param verbose_iter Print progress updates
 #' @param path_evaluate_model_adjusted Internal argument for sourcing required functions
 #' @import tidyverse
-#'
+#' @import progress
+#' @export
 evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
                               model_folder="/GitHub/R_main/models/2024 models/PLS_75_25_var_dependent_preProcess",
                               model_type_pattern="pls_",
