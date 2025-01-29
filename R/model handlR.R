@@ -44,7 +44,7 @@ get_best=function(model_eval,
 #' @param restrict_spc If True only regard models for which spc preprocessing sets are available. If False, search in all models for best candidate and
 #' return ERROR when spc set for best candidate is not available
 #' @import tidyverse
-#' @import cubist
+#' @import Cubist
 #' @import resemble
 #' @import caret
 #' @import pls

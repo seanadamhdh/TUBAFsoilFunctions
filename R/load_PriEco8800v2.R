@@ -4,7 +4,7 @@
 #' @title PriEco8800 Flux calculator
 #' @description flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.
 #' @note optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise
-#' @param dataset
+#' @param dataset Flux measurement data for slope calculation as loaded by load_pri8800_data.
 #' @param V_ch_list Total system volume (accumulation volume) of each incubation vessel. If NA defaults to 1. cubic meter
 #' @param A_ch Default base area - For compatibility with field chambers. If NA defaults to 1. square meter
 #' @param wt_list List of soil sample weights in each vessel. grams

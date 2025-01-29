@@ -127,7 +127,7 @@ R2 <- function(obs, pred){
 
 #' @title get ggthemes discrete colorblind-safe colors
 #' @description
-#https://jrnold.github.io/ggthemes/reference/colorblind.html
+#' https://jrnold.github.io/ggthemes/reference/colorblind.html
 #' @returns 8 discrete colors as hex-string vector
 #' @export
 colorblind_safe_colors=function(){

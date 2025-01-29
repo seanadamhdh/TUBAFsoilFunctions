@@ -8,4 +8,5 @@ Description: Assortment of functions used in the TUBAF soil working group, e.g.,
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: tidyverse, simplerspec, resemble, prospectr, caret, cubist, pls
+Imports: tidyverse, simplerspec, resemble, prospectr, caret, Cubist, pls
+RoxygenNote: 7.3.2

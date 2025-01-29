@@ -6,6 +6,8 @@
 #' @title val_train_size
 #' @description
 #' validation of model list output created by train_sample_size()
+#'
+#' @note install additional packages for specific model types manually
 #' @param models Models list object created by train_sample_size.
 #' @param trans_rev Optional function to reverse transformation. 'none' will do nothing.
 #' If not specified, function will catch trans_rev from models$...$documentation$trans_rev
