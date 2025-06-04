@@ -9,8 +9,9 @@ cm_aggregate(
   depth_top_col,
   depth_bottom_col,
   aggregate_list,
-  group_list,
-  res_out = 0.1
+  group_list = "o3",
+  res_out = 0.1,
+  add_funs = NA
 )
 }
 \arguments{
@@ -22,9 +23,12 @@ cm_aggregate(
 
 \item{aggregate_list}{Columns to be aggregated. Can be character vector or string. Selected column must be numeric}
 
-\item{group_list}{Optional grouping variables (e.g., sites, sampling points, soil cores etc.)}
+\item{group_list}{Optional grouping variables (e.g., sites, sampling points, soil cores etc.).
+Default set to o3 corresponding to output upper depth (no additional grouping).}
 
-\item{res_out}{Aggregate depth increments in cm}
+\item{res_out}{Aggregate depth increments that are to be returned. Should be same unit as depth_bottom_col and depth_top_col.}
+
+\item{add_funs}{List of additional function arguments like sd or n that can be passed to summarise. This will change output for aggregate vars to ..._mean, ..._sd, etc.}
 }
 \description{
 Dataset containing sampling depth (upper+lower) and numeric values can be aggregated to equal depth increments.
