@@ -133,7 +133,7 @@ train_sample_size <- function(data,
   #print("DEBUG 1")
 
 
-  # Define the K-means sampling function
+  # Define the K-means sampling function !!! INTERNAL !!! -> if this causes issues make external function that is called here
   kmeans_sampling <- function(dataset, num_samples) {
 
     if (ncol(dataset$Xr)<3){

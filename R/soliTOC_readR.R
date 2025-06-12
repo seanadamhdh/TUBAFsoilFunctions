@@ -15,7 +15,7 @@
 #' If TRUE, proceed, else stop (already fixed column name), because function would shift colnames wrongfully.
 #'
 #' @import tidyverse
-#'
+#' @export
 fix_soliTOC_colnames=function(soliTOC_raw_excel,
                               save=F,
                               save_location="keep",
@@ -99,7 +99,7 @@ fix_soliTOC_colnames=function(soliTOC_raw_excel,
 #' @param keep_batch Logical: Function creates helper variable "batch" to assign dayfactors. Should this be kept?
 #' Default is FALSE. Used mostly for debug.
 #' @import tidyverse
-#'
+#' @export
 get_dayfactors<-function(dataset,    #data.frame or tibble
                          ID_col="Name",   #id column
                          std_id="caco3",  #reference id
@@ -193,6 +193,7 @@ get_dayfactors<-function(dataset,    #data.frame or tibble
 #'
 #' @returns A tibble or data.frame containing the dayfactor corrected C-fractions for the samples selected by detection of  ID_col
 #' @import tidyverse
+#' @export
 
 pull_set_soliTOC=function(soliTOC_file,
                           fix_cols=T,
@@ -288,7 +289,7 @@ pull_set_soliTOC=function(soliTOC_file,
 #' @param .col_name several arguments to set column names. Default are German names.
 #' Adjust when using Elementar soliTOC software in different language.
 #' @import tidyverse
-#'
+#' @export
 soliTOC_remove_duplicates<-function(dataset,
                                     measurement_method="DIN19539",
                                     reference=T,
