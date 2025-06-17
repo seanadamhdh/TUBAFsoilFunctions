@@ -16,7 +16,7 @@ calc_flux_manual(dataset, V_ch_list = c(NA), A_ch = NA, wt_list = c(NA))
 \item{wt_list}{List of soil sample weights in each vessel. grams}
 }
 \description{
-flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.
+Legacy flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.
 }
 \note{
 optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise

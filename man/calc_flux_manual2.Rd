@@ -27,7 +27,7 @@ calc_flux_manual2(
 \item{heigth_list}{Sample height in the cylinder in cm}
 }
 \description{
-Flux calculation for PriEco8800 incubator.
+Manual flux calculation for PriEco8800 incubator.
 }
 \note{
 optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise
