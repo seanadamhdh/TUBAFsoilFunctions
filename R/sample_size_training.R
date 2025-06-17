@@ -4,14 +4,11 @@
 
 
 #' @title val_train_size
-#' @description
-#' validation of model list output created by train_sample_size()
-#'
+#' @description validation of model list output created by train_sample_size()
 #' @note install additional packages for specific model types manually
 #' @param models Models list object created by train_sample_size.
 #' @param trans_rev Optional function to reverse transformation. 'none' will do nothing.
 #' If not specified, function will catch trans_rev from models$...$documentation$trans_rev
-#'
 #' @import progress
 #' @import tidyverse
 #'
@@ -61,13 +58,10 @@ val_train_size=function(models,trans_rev=NULL){
 
 
 #' @title Sample size effect on model accuracy estimator
-#'
 #' @description Splits dataset into train/test set and runs multiple calibrations using increasing number of observartions from training data.
 #' Model accuracy is calculated for each created model using the hold-out test set.
 #' Can be used to assess effect of sample size on model performance. Should support most (numeric) regression models implemented in caret (no guarantees though - not tested)
-#'
 #' @note In future, extract kmeans sampling function as standalone
-#'
 #' @param data Dataset for model calibration. Can be tibble or dataframe. Must contain column Yr and column or nested tibble/data.frame/matrix Xr.
 #' @param Xr="spc_sg_snv_rs4" Predictor variable(s). Vector column or nested tibble/data.frame/matrix.Will be converted into nested matrix.
 #' @param Yr="TOC" Target variable. Currently only single column supported.
@@ -85,15 +79,12 @@ val_train_size=function(models,trans_rev=NULL){
 #' @param return_all=T return to console
 #' @param seed=123 seed for initial train / test split for reproduceability
 #' @param ... additional arguments passed to caret::train
-#'
 #' @returns If return_all = TRUE, returns object containing a list 'models' with all calibrated models (caret::train object with additional details appended to object$documentation)
 #' and val_stats containing evaluation metrics. !!! CURRENTLY USES LOCAL FUNCTION from evaluate_model_adjusted.R
-#'
 #' @import tidyverse
 #' @import caret
 #' @import prospectr
 #' @import progress
-#'
 #' @export
 train_sample_size <- function(data,
                               Xr="spc_sg_snv_rs4",

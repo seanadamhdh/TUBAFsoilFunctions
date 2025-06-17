@@ -205,7 +205,6 @@ calc_flux_manual2=function(dataset,
 #' @param V_sys System volume (Tubing etc). Default is 182 mL + 8 mL = 190 mL.
 #' @param V_delta Additional volume tuning argument in mL. Default = 0.
 #' @param wt_list List of soil sample weights in each vessel in grams.  Vector of length 25 required, corresponding to sample positions.
-#'
 #' @import tidyverse
 #' @import progress
 #' @export

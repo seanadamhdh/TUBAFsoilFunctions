@@ -31,7 +31,6 @@ Default is FALSE. Used mostly for debug.}
 \description{
 function for pulling dayfactors from soliTOC file
 Creates column called factor with respective dayfactors. Does not yet apply them.
-
 Measurements are grouped with preceding repeated measurements of standard sample(s).
 If multiple repeated standard measurements, the standard is averaged for each set. A dayfactor is
 calculated for each set based on the average standard measurement and the theoretical value.

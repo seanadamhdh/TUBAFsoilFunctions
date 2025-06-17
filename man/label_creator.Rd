@@ -17,5 +17,5 @@ label_creator(dataset, origin = "X", digits = 4)
 Vector of ID strings corresponding to each entry (vector) or row (tibble) of dataset.
 }
 \description{
-label_creator
+Soil lab labels generator. Multi-digit letter codes.
 }

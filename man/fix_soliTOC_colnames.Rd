@@ -18,16 +18,13 @@ fix_soliTOC_colnames(
 
 \item{save}{Should the fixed df be saved as csv? Default FALSE}
 
-\item{save_location}{Optional: a filepath (C:/dir/other_dir/myFile.csv), where the fixed df should be stored as csv.
-Default is "keep". This uses soliTOC_raw_excel to get a filepath and saves output as basename_fixed.csv}
+\item{save_location}{Optional: a filepath (C:/dir/other_dir/myFile.csv), where the fixed df should be stored as csv. Default is "keep". This uses soliTOC_raw_excel to get a filepath and saves output as basename_fixed.csv}
 
 \item{return}{Should the output be returned? Default TRUE}
 
-\item{time.col_name}{Used as failsafe. Checks if the time.col_name string can still be found in the date column name.
-If TRUE, proceed, else stop (already fixed column name), because function would shift colnames wrongfully.}
+\item{time.col_name}{Used as failsafe. Checks if the time.col_name string can still be found in the date column name. If TRUE, proceed, else stop (already fixed column name), because function would shift colnames wrongfully.}
 
-\item{Date_Time_colname_postion}{For comparability: Which column contains the separated Date and Time entry?
-Default is the 6.}
+\item{Date_Time_colname_postion}{For comparability: Which column contains the separated Date and Time entry? Default is the 6.}
 }
 \description{
 Automatically fix shifted colnames in soliTOC excel exports.

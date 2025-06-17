@@ -20,19 +20,15 @@ pull_set_soliTOC(
 )
 }
 \arguments{
-\item{soliTOC_file}{Excel file containing raw export from soliTOC Elementar software.
-Check for proper column naming, as Date Time is typically read as 2 columns, bt only one column name.
-This shifts all subsequent col names to the left. Fix manually.}
+\item{soliTOC_file}{Excel file containing raw export from soliTOC Elementar software. Check for proper column naming, as Date Time is typically read as 2 columns, bt only one column name. This shifts all subsequent col names to the left. Fix manually.}
 
 \item{ID_col_set}{Which column contains the identifier for the sample selection? Default is "Name"}
 
-\item{set_id}{String or vector of strings which represent the unique identifier(s) that are searched for in
-`ID_col_set` by str_detect}
+\item{set_id}{String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_set` by str_detect}
 
 \item{ID_col_std}{Which columns contain the identifier for the standard selection? Default is "Name"}
 
-\item{std_id}{String or vector of strings which represent the unique identifier(s) that are searched for in
-`ID_col_std` by str_detect. Default is "caco3".}
+\item{std_id}{String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_std` by str_detect. Default is "caco3".}
 
 \item{Memo_col_set}{Which column contains the additional Memo identifier?}
 
@@ -50,8 +46,5 @@ This shifts all subsequent col names to the left. Fix manually.}
 A tibble or data.frame containing the dayfactor corrected C-fractions for the samples selected by detection of  ID_col
 }
 \description{
-Function for the correction and aggregation of SoliTOC measurements.
-Loads a raw excel file as exported from soliTOC software.
-Calculates and applies dayfactor correction based on standard measurements.
-Select and aggregate samples based on identifer string(s).
+Function for the correction and aggregation of SoliTOC measurements. Loads a raw excel file as exported from soliTOC software. Calculates and applies dayfactor correction based on standard measurements. Select and aggregate samples based on identifer string(s).
 }

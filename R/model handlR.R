@@ -5,12 +5,8 @@
 
 
 #' @title get best model for variable based on metric
-#'
-#' @description
-#' From a folder containing model object created with scripts used in the BDF-SSL framework, select the best model candidate based on a evaluation metric for a given variable.
-#'
+#' @description From a folder containing model object created with scripts used in the BDF-SSL framework, select the best model candidate based on a evaluation metric for a given variable.
 #' @note Not yet generalised
-#'
 #' @param model_eval model evaluation object created with evaluate_model_batch()
 #' @param prefix Model names prefix, usually defines model type
 #' @param variable Variable for which the best model is to be searched
@@ -229,12 +225,9 @@ predict_variable=function(
 # model evaluation aggregation ####
 
 #' @title model evaluation (BDF-SSL)
-#' @description
-#' Batch model runs evaluation aggregation
+#' @description Batch model runs evaluation aggregation
 #' Currently only supports testset data (no gt300)
-#'
 #' @note evaluate_model_adjusted source path is legacy. Change in future
-#'
 #' @param root_dir Root directory to Project
 #' @param model_folder Folder containing model objects
 #' @param model_type_pattern prefix of model object names

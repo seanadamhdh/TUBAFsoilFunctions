@@ -1,18 +1,13 @@
 
 
 #' @title Fix soliTOC csv colnames
-#' @description
-#' Automatically fix shifted colnames in soliTOC excel exports.
-#'
+#' @description Automatically fix shifted colnames in soliTOC excel exports.
 #' @param soliTOC_raw_excel An Excel file as exported from soliTOC software
 #' @param save Should the fixed df be saved as csv? Default FALSE
-#' @param save_location Optional: a filepath (C:/dir/other_dir/myFile.csv), where the fixed df should be stored as csv.
-#' Default is "keep". This uses soliTOC_raw_excel to get a filepath and saves output as basename_fixed.csv
+#' @param save_location Optional: a filepath (C:/dir/other_dir/myFile.csv), where the fixed df should be stored as csv. Default is "keep". This uses soliTOC_raw_excel to get a filepath and saves output as basename_fixed.csv
 #' @param return Should the output be returned? Default TRUE
-#' @param Date_Time_colname_postion For comparability: Which column contains the separated Date and Time entry?
-#' Default is the 6.
-#' @param time.col_name Used as failsafe. Checks if the time.col_name string can still be found in the date column name.
-#' If TRUE, proceed, else stop (already fixed column name), because function would shift colnames wrongfully.
+#' @param Date_Time_colname_postion For comparability: Which column contains the separated Date and Time entry? Default is the 6.
+#' @param time.col_name Used as failsafe. Checks if the time.col_name string can still be found in the date column name. If TRUE, proceed, else stop (already fixed column name), because function would shift colnames wrongfully.
 #'
 #' @import tidyverse
 #' @export
@@ -75,10 +70,8 @@ fix_soliTOC_colnames=function(soliTOC_raw_excel,
 
 
 #' @title get dayfactors
-#' @description
-#' function for pulling dayfactors from soliTOC file
+#' @description function for pulling dayfactors from soliTOC file
 #' Creates column called factor with respective dayfactors. Does not yet apply them.
-#'
 #' Measurements are grouped with preceding repeated measurements of standard sample(s).
 #' If multiple repeated standard measurements, the standard is averaged for each set. A dayfactor is
 #' calculated for each set based on the average standard measurement and the theoretical value.
@@ -89,7 +82,6 @@ fix_soliTOC_colnames=function(soliTOC_raw_excel,
 #' 1-1-1-1-1-1-1-1-1-1-2-2-2-2-2-2-2-2
 #' Then, factor_1 would be calculated as S_acutal/S1 and applied to all samples.
 #' A (sub)string of the sample names that the user wants to get returned needs to be provided.
-#'
 #' @param dataset Exported soliTOC csv file
 #' @param IC_col Sample names column. Should also include standard identifiers (Default is Name, as in soliTOC software)
 #' @param std_id Identifier of the standards for dayfactor calculation (default is caco3)
@@ -169,28 +161,18 @@ get_dayfactors<-function(dataset,    #data.frame or tibble
 
 
 #' @title pull_set_soliTOC
-#' @description
-#' Function for the correction and aggregation of SoliTOC measurements.
-#' Loads a raw excel file as exported from soliTOC software.
-#' Calculates and applies dayfactor correction based on standard measurements.
-#' Select and aggregate samples based on identifer string(s).
-#'
-#' @param soliTOC_file Excel file containing raw export from soliTOC Elementar software.
-#' Check for proper column naming, as Date Time is typically read as 2 columns, bt only one column name.
-#' This shifts all subsequent col names to the left. Fix manually.
+#' @description Function for the correction and aggregation of SoliTOC measurements. Loads a raw excel file as exported from soliTOC software. Calculates and applies dayfactor correction based on standard measurements. Select and aggregate samples based on identifer string(s).
+#' @param soliTOC_file Excel file containing raw export from soliTOC Elementar software. Check for proper column naming, as Date Time is typically read as 2 columns, bt only one column name. This shifts all subsequent col names to the left. Fix manually.
 #' @param ID_col_set Which column contains the identifier for the sample selection? Default is "Name"
-#' @param set_id String or vector of strings which represent the unique identifier(s) that are searched for in
-#' `ID_col_set` by str_detect
+#' @param set_id String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_set` by str_detect
 #' @param ID_col_std Which columns contain the identifier for the standard selection? Default is "Name"
-#' @param std_id String or vector of strings which represent the unique identifier(s) that are searched for in
-#' `ID_col_std` by str_detect. Default is "caco3".
+#' @param std_id String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_std` by str_detect. Default is "caco3".
 #' @param Memo_col_set Which column contains the additional Memo identifier?
 #' @param set_memo Optional string or vector to search for in Memo_col_set. Optional - to omit this subset layer set to NA.
 #' @param std_value_col Which column containes the measurements
 #' @param actual True value (concentration). Default is 12 (wt-%) TC for caco3.
 #' @param keep_batch Should the column containing aggregation information be kept? Default=F
 #' @param omit_check_cols Override checking of columns integrity. Default=F.
-#'
 #' @returns A tibble or data.frame containing the dayfactor corrected C-fractions for the samples selected by detection of  ID_col
 #' @import tidyverse
 #' @export
@@ -270,13 +252,11 @@ pull_set_soliTOC=function(soliTOC_file,
 
 
 #' @title duplicate filtering
-#' @description
-#' soliTOC_remove_duplicates
+#' @description soliTOC_remove_duplicates
 #' Function that removes repeated samples from soliTOC file based on
 #' a) lowest MAE to reference data for SOC (named CORG)
 #' b) averageing duplicates
 #' c) selecting the latest measured replicate
-#'
 #' @param dataset soliTOC data.frame or tibble that has already undergone get_dayfactors.
 #' Using raw soliTOC data could lead to loss of e.g., standard data, as they would be flagged as duplicates.
 #' @param reference Logical. Is reference data provided? If TRUE, a column labeled CORG containing SOC data needs to be attached
