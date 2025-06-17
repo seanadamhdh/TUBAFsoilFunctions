@@ -2,7 +2,7 @@
 % Please edit documentation in R/load_PriEco8800v2.R
 \name{calc_flux_manual}
 \alias{calc_flux_manual}
-\title{PriEco8800 Flux calculator}
+\title{Flux calculator (legacy version)}
 \usage{
 calc_flux_manual(dataset, V_ch_list = c(NA), A_ch = NA, wt_list = c(NA))
 }
