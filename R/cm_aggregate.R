@@ -36,7 +36,7 @@ cm_aggregate=function(dataset,depth_top_col,depth_bottom_col,aggregate_list,grou
     # Create depth intervals and aggregate, handling negative depths
     mutate(
       o3 = floor((o2+1E-10) / res_out) * res_out,  # Calculate lower bound of 10cm intervals for o2 cm->dm # add /subtract very small number to avoid rounding error
-      u3 = ceiling(u2-1E-10) / res_out) * res_out  # Calculate upper bound of 10cm intervals for u2 # add /subtract very small number to avoid rounding error
+      u3 = ceiling((u2-1E-10) / res_out) * res_out  # Calculate upper bound of 10cm intervals for u2 # add /subtract very small number to avoid rounding error
     ) %>%
     group_by(across(all_of(c("o3","u3",group_list))))%>%
     summarize(
