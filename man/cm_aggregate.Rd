@@ -32,4 +32,5 @@ Default set to o3 corresponding to output upper depth (no additional grouping).}
 }
 \description{
 Dataset containing sampling depth (upper+lower) and numeric values can be aggregated to equal depth increments.
+Depths and `res_out` should be stated in meters.
 }
