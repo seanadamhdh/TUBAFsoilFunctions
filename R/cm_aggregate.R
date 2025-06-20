@@ -17,9 +17,9 @@
 #' @import tidyverse
 #' @export
 #'
-cm_aggregate=function(dataset,depth_top_col,depth_bottom_col,aggregate_list,group_list="o3",res_out=.1,add_funs=NA){
+cm_aggregate=function(dataset,depth_top_col,depth_bottom_col,aggregate_list,group_list="o3",res_out=.1,add_funs=NULL){
 
-  if(is.na(add_funs)){
+  if(is.null(add_funs)){
   # expand data to 1 cm increments
   dataset %>%
     rowwise() %>%
