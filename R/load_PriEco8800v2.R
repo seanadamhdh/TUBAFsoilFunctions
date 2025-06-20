@@ -207,6 +207,7 @@ calc_flux_manual2=function(dataset,
 #' @param wt_list List of soil sample weights in each vessel in grams.  Vector of length 25 required, corresponding to sample positions.
 #' @import tidyverse
 #' @import progress
+#' @import useful
 #' @export
 load_pri8800_data=function(
     folder,
