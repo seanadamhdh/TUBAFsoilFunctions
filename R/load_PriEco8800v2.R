@@ -38,13 +38,14 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
       A_ch=1
     }
 
-    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(individual_meas$time)<end_cutoff){
-      end_cutoff=max(individual_meas$time)
+    individual_meas_raw=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
+
+    if(max(individual_meas_raw$time)<end_cutoff){
+      end_cutoff=max(individual_meas_raw$time)
     }
 
-    individual_meas%>%
+    individual_meas=individual_meas_raw%>%
       transmute(
         run=run,
         round=round,
@@ -154,13 +155,13 @@ calc_flux_manual2=function(dataset,
     }
 
     #step1
-    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
+    individual_meas_raw=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(individual_meas$time)<end_cutoff){
-      end_cutoff=max(individual_meas$time)
+    if(max(individual_meas_raw$time)<end_cutoff){
+      end_cutoff=max(individual_meas_raw$time)
     }
 
-    individual_meas%>%
+    individual_meas=individual_meas_raw%>%
       transmute(
         run=run,
         round=round,
