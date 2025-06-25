@@ -1,7 +1,7 @@
 Package: TUBAFsoilFunctions
 Type: Package
 Title: Assorted functions used at TUBAF soil group.
-Version: 0.1.6
+Version: 0.1.7
 Author: Sean Adam
 Maintainer: Sean Adam <sean.adam@mineral.tu-freiberg.de>
 Description: Assortment of functions used in the TUBAF soil working group, e.g., DRIFTS and soliTOC data handling. Note that currently some warnings are thrown because of loading conflicts. Might fix in future.
