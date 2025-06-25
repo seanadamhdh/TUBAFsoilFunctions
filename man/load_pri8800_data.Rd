@@ -12,7 +12,9 @@ load_pri8800_data(
   wt_list = rep(NA, 25),
   V_head = 6.5 * (3.85/2)^2 * pi,
   V_sys = 190,
-  V_delta = 0
+  V_delta = 0,
+  start_cutoff = 60,
+  end_cutoff = 450
 )
 }
 \arguments{
@@ -29,6 +31,10 @@ load_pri8800_data(
 \item{V_sys}{System volume (Tubing etc). Default is 182 mL + 8 mL = 190 mL.}
 
 \item{V_delta}{Additional volume tuning argument in mL. Default = 0.}
+
+\item{start_cutoff}{Data is used for evaluation from this time (sec) after after start of recording. Default 60s}
+
+\item{end_cutoff}{Data is used for evaluation to this time (sec) after after start of recording. Default 450s}
 
 \item{heigth_list}{Sample height in the cylinder in cm}
 }

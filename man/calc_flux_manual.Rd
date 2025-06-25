@@ -4,7 +4,14 @@
 \alias{calc_flux_manual}
 \title{Flux calculator (legacy version)}
 \usage{
-calc_flux_manual(dataset, V_ch_list = c(NA), A_ch = NA, wt_list = c(NA))
+calc_flux_manual(
+  dataset,
+  V_ch_list = c(NA),
+  A_ch = NA,
+  wt_list = c(NA),
+  start_cutoff = 60,
+  end_cutoff = 360
+)
 }
 \arguments{
 \item{dataset}{Flux measurement data for slope calculation as loaded by load_pri8800_data.}
@@ -14,6 +21,10 @@ calc_flux_manual(dataset, V_ch_list = c(NA), A_ch = NA, wt_list = c(NA))
 \item{A_ch}{Default base area - For compatibility with field chambers. If NA defaults to 1. square meter}
 
 \item{wt_list}{List of soil sample weights in each vessel. grams}
+
+\item{start_cutoff}{Data is used for evaluation from this time (sec) after after start of recording. Default 60s}
+
+\item{end_cutoff}{Data is used for evaluation to this time (sec) after after start of recording. Default 360s}
 }
 \description{
 Legacy flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.

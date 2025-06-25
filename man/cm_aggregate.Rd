@@ -11,7 +11,7 @@ cm_aggregate(
   aggregate_list,
   group_list = "o3",
   res_out = 0.1,
-  add_funs = NA
+  add_funs = NULL
 )
 }
 \arguments{

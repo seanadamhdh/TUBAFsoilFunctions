@@ -8,10 +8,12 @@
 #' @param V_ch_list Total system volume (accumulation volume) of each incubation vessel. If NA defaults to 1. cubic meter
 #' @param A_ch Default base area - For compatibility with field chambers. If NA defaults to 1. square meter
 #' @param wt_list List of soil sample weights in each vessel. grams
+#' @param start_cutoff Data is used for evaluation from this time (sec) after after start of recording. Default 60s
+#' @param end_cutoff Data is used for evaluation to this time (sec) after after start of recording. Default 360s
 #' @import tidyverse
 #' @import progress
 #' @export
-calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA)){
+calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cutoff=60,end_cutoff=360){
   results=c()
   measurements=unique(paste(dataset$run,dataset$round,dataset$sample,sep="-"))
   pb=progress_bar$new(total=length(measurements),format="Manual flux calculation: [:bar] :percent eta: :eta",force = T)
@@ -36,7 +38,13 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA)){
       A_ch=1
     }
 
-    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])%>%
+    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
+
+    if(max(time)<cutoff_end){
+      cutoff_end=max(time)
+    }
+
+    individual_meas%>%
       transmute(
         run=run,
         round=round,
@@ -56,7 +64,8 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA)){
                  new=approx(x=time,y=x,n=max(time)+1) # set equidistant 1s intervals
                  return(new$y)
                }))%>%
-          mutate(DateTime=as.POSIXct(DateTime))
+          mutate(DateTime=as.POSIXct(DateTime))%>%
+      filter(time>=cutoff_start&time<=cutoff_end)
 
 
     individual_meas=mutate(individual_meas,
@@ -79,7 +88,9 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA)){
         F_CO2_corr=slope_corr*V_ch/8.134/A_ch,
         F_CO2_wt=12*slope*V_ch*mean_pres/8.314/wt/mean_sens_tempK*24*3600,
         F_CO2_wt_corr=12*slope_corr*V_ch/8.314/wt*24*3600,
-        flag=flag)->results_i
+        flag=flag,
+        cutoff_start=cutoff_start,
+        cutoff_end=cutoff_end)->results_i
     results=rbind(results,results_i)
     #print(results_i) #debug
   }
@@ -100,6 +111,8 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA)){
 #' @param V_sys System volume (Tubing etc). Default is 182 mL + 8 mL = 190 mL.
 #' @param V_delta Additional volume tuning argument in mL. Default = 0.
 #' @param wt_list List of soil sample weights in each vessel in grams.  Vector of length 25 required, corresponding to sample positions.
+#' @param start_cutoff Data is used for evaluation from this time (sec) after after start of recording. Default 60s
+#' @param end_cutoff Data is used for evaluation to this time (sec) after after start of recording. Default 450s
 #' @import tidyverse
 #' @import progress
 #' @export
@@ -108,7 +121,9 @@ calc_flux_manual2=function(dataset,
                            wt_list=rep(NA,25),
                            V_head=6.5*(3.85/2)**2*pi,
                            V_sys=190,
-                           V_delta=0){
+                           V_delta=0,
+                           start_cutoff=60,
+                           end_cutoff=450){
   if(length(height_list)!=25){
     warning("Sample heigth vector is not length 25. Sample heights might not be allocated correctly.")
   }
@@ -139,7 +154,13 @@ calc_flux_manual2=function(dataset,
     }
 
     #step1
-    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])%>%
+    individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
+
+    if(max(time)<cutoff_end){
+      cutoff_end=max(time)
+    }
+
+    individual_meas%>%
       transmute(
         run=run,
         round=round,
@@ -159,7 +180,8 @@ calc_flux_manual2=function(dataset,
                        new=approx(x=time,y=x,n=max(time)+1) # set equidistant 1s intervals
                        return(new$y)
                      }))%>%
-          mutate(DateTime=as.POSIXct(DateTime))
+          mutate(DateTime=as.POSIXct(DateTime))%>%
+      filter(time>=cutoff_start&time<=cutoff_end)
 
     #print(individual_meas)#datatime
 
@@ -184,7 +206,9 @@ calc_flux_manual2=function(dataset,
         # µg CO2-C / g soil / day
         F_CO2_wt=12*slope*V_ch*mean_pres/8.314/wt/mean_sens_tempK*24*3600,
         F_CO2_wt_corr=12*slope_corr*V_ch/8.314/wt*24*3600,
-        flag=flag)->results_i
+        flag=flag,
+        cutoff_start=cutoff_start,
+        cutoff_end=cutoff_end)->results_i
     results=rbind(results,results_i)
     #print(results_i) #debug
   }
@@ -205,6 +229,8 @@ calc_flux_manual2=function(dataset,
 #' @param V_sys System volume (Tubing etc). Default is 182 mL + 8 mL = 190 mL.
 #' @param V_delta Additional volume tuning argument in mL. Default = 0.
 #' @param wt_list List of soil sample weights in each vessel in grams.  Vector of length 25 required, corresponding to sample positions.
+#' @param start_cutoff Data is used for evaluation from this time (sec) after after start of recording. Default 60s
+#' @param end_cutoff Data is used for evaluation to this time (sec) after after start of recording. Default 450s
 #' @import tidyverse
 #' @import progress
 #' @import useful
@@ -217,7 +243,9 @@ load_pri8800_data=function(
     wt_list=rep(NA,25),
     V_head=6.5*(3.85/2)**2*pi,
     V_sys=190,
-    V_delta=0
+    V_delta=0,
+    start_cutoff=60,
+    end_cutoff=450
 ){
   # load slope data
   {
@@ -310,7 +338,14 @@ load_pri8800_data=function(
   # manual calcualtion of flux
   if(calculate_flux_manual==T){
     print("manual flux calculation")
-    Flux_data_manual=calc_flux_manual2(Meas_data,wt_list=wt_list,V_head = V_head,height_list = height_list,V_sys = V_sys,V_delta=V_delta)
+    Flux_data_manual=calc_flux_manual2(Meas_data,
+                                       wt_list=wt_list,
+                                       V_head = V_head,
+                                       height_list = height_list,
+                                       V_sys = V_sys,
+                                       V_delta=V_delta,
+                                       start_cutoff=start_cutoff,
+                                       end_cutoff=end_cutoff)
 
     print("Merging flux and slope data...")
 
