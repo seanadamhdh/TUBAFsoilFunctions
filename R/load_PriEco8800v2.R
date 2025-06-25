@@ -40,8 +40,8 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
 
     individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(time)<cutoff_end){
-      cutoff_end=max(time)
+    if(max(individual_meas$time)<cutoff_end){
+      cutoff_end=max(individual_meas$time)
     }
 
     individual_meas%>%
@@ -156,8 +156,8 @@ calc_flux_manual2=function(dataset,
     #step1
     individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(time)<cutoff_end){
-      cutoff_end=max(time)
+    if(max(individual_meas$time)<cutoff_end){
+      cutoff_end=max(individual_meas$time)
     }
 
     individual_meas%>%
