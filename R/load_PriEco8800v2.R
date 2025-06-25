@@ -40,8 +40,8 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
 
     individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(individual_meas$time)<cutoff_end){
-      cutoff_end=max(individual_meas$time)
+    if(max(individual_meas$time)<end_cutoff){
+      end_cutoff=max(individual_meas$time)
     }
 
     individual_meas%>%
@@ -65,7 +65,7 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
                  return(new$y)
                }))%>%
           mutate(DateTime=as.POSIXct(DateTime))%>%
-      filter(time>=cutoff_start&time<=cutoff_end)
+      filter(time>=start_cutoff&time<=end_cutoff)
 
 
     individual_meas=mutate(individual_meas,
@@ -89,8 +89,8 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
         F_CO2_wt=12*slope*V_ch*mean_pres/8.314/wt/mean_sens_tempK*24*3600,
         F_CO2_wt_corr=12*slope_corr*V_ch/8.314/wt*24*3600,
         flag=flag,
-        cutoff_start=cutoff_start,
-        cutoff_end=cutoff_end)->results_i
+        start_cutoff=start_cutoff,
+        end_cutoff=end_cutoff)->results_i
     results=rbind(results,results_i)
     #print(results_i) #debug
   }
@@ -156,8 +156,8 @@ calc_flux_manual2=function(dataset,
     #step1
     individual_meas=filter(dataset,run==measurement_i[1],round==measurement_i[2],sample==measurement_i[3])
 
-    if(max(individual_meas$time)<cutoff_end){
-      cutoff_end=max(individual_meas$time)
+    if(max(individual_meas$time)<end_cutoff){
+      end_cutoff=max(individual_meas$time)
     }
 
     individual_meas%>%
@@ -181,7 +181,7 @@ calc_flux_manual2=function(dataset,
                        return(new$y)
                      }))%>%
           mutate(DateTime=as.POSIXct(DateTime))%>%
-      filter(time>=cutoff_start&time<=cutoff_end)
+      filter(time>=start_cutoff&time<=end_cutoff)
 
     #print(individual_meas)#datatime
 
@@ -207,8 +207,8 @@ calc_flux_manual2=function(dataset,
         F_CO2_wt=12*slope*V_ch*mean_pres/8.314/wt/mean_sens_tempK*24*3600,
         F_CO2_wt_corr=12*slope_corr*V_ch/8.314/wt*24*3600,
         flag=flag,
-        cutoff_start=cutoff_start,
-        cutoff_end=cutoff_end)->results_i
+        start_cutoff=start_cutoff,
+        end_cutoff=end_cutoff)->results_i
     results=rbind(results,results_i)
     #print(results_i) #debug
   }
