@@ -1,5 +1,3 @@
 url: ~
-template:
-  bootstrap: 5
-  logo: man/figures/logo.png
-
+development:
+  mode: auto
