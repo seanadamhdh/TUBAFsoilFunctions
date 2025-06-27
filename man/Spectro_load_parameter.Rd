@@ -9,12 +9,12 @@ Spectro_load_parameter(directory, parameters = c("Temp"), id = T)
 \arguments{
 \item{directory}{Path to unzipped parameter-folder.}
 
-\item{id}{Boolean. Should serial No be added as column to the tibble (for ID-ing the spectrolyzer later). Default=T. For addition of id-column, the metadata-file must be present in `directory`}
+\item{id}{Boolean. Should serial No be added as column to the tibble (for ID-ing the spectrolyzer later). Default=T. For addition of id-column, the metadata-file must be present in \code{directory}}
 }
 \value{
-A tibble with the columns Date_Time (POSIXct), `parameters` (additionally measured variables) and, if `id`==TRUE, the Serial_No, containing the spectrolyzer id.
+A tibble with the columns Date_Time (POSIXct), \code{parameters} (additionally measured variables) and, if \code{id}==TRUE, the Serial_No, containing the spectrolyzer id.
 }
 \description{
 NOTE: Removes flagged spectra. Generalised parameter load-in for spectrolyzer data.
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

@@ -16,14 +16,14 @@ Spectro_load_fingerprint(
 
 \item{wavelengths}{Vector of wavelengths. Column names of measured wavelengths. default is 200-750 nm in 2.5 nm steps}
 
-\item{sel_wavelengths}{Vector of wavelengths. Range of wavelengths that shall be returned (<= range of `wavelengths`)}
+\item{sel_wavelengths}{Vector of wavelengths. Range of wavelengths that shall be returned (<= range of \code{wavelengths})}
 
-\item{id}{Boolean. Should serial No be added as column to the tibble (for ID-ing the spectrolyzer later). Default=T. For addition of id-column, the metadata-file must be present in `directory`}
+\item{id}{Boolean. Should serial No be added as column to the tibble (for ID-ing the spectrolyzer later). Default=T. For addition of id-column, the metadata-file must be present in \code{directory}}
 }
 \value{
-A nested tibble with the columns Date_Time (POSIXct), spc with spc$`sel_wavelengths` (absorbances at wavelength) and, if `id`==TRUE, the Serial_No, containing the spectrolyzer id.
+A nested tibble with the columns Date_Time (POSIXct), spc with spc$\code{sel_wavelengths} (absorbances at wavelength) and, if \code{id}==TRUE, the Serial_No, containing the spectrolyzer id.
 }
 \description{
 NOTE: Removes flagged spectra. Generalised fingerprint load-in for spectrolyzer data.
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

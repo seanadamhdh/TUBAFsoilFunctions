@@ -7,12 +7,13 @@
 unzip_local(zip_directory, new_dir = NULL)
 }
 \arguments{
-\item{zip_directory}{zip-folder that is to be extracted, i.e.: `./somepath/folder/data.zip`}
+\item{zip_directory}{zip-folder that is to be extracted, i.e.: \code{./somepath/folder/data.zip}}
 
 \item{new}{Target folder. Default is NULL. If NULL, unzipped folder is written in the same place as the zip folder,
- with the same name as the zip folder,i.e.: `./somepath/folder/data`
-If not NULL, unzipped folder `data` is written in `new`. IF `new` does not exist, it is created.}
+with the same name as the zip folder,i.e.: \code{./somepath/folder/data}
+If not NULL, unzipped folder \code{data} is written in \code{new}. IF \code{new} does not exist, it is created.}
 }
 \description{
 Unzips .zip folders and saves locally. Internal, i.e., for processing of Spectrolyzer data.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

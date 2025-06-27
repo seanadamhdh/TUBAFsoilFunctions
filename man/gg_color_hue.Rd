@@ -11,4 +11,5 @@ gg_color_hue(n)
 }
 \description{
 Emulate ggplot color scale
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

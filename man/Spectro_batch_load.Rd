@@ -29,12 +29,12 @@ If so, list them in a vector and they will be disregarded.}
 }
 \value{
 A tibble that contains all fingerprint and parameter data, joined by Serial_No and Date_Time. Duplicated mearsurements (i.e, by overlapping spectrolyzer data downloads) are removed.
-Spectra are saved as nested tibble in `spc`.
+Spectra are saved as nested tibble in \code{spc}.
 }
 \description{
 Wrapper function for streamlined load-in of spectrolyzer data.
 Enables load-in of multipe scpectrolyzer-zip-files or already un-zipped files to coherent tibble
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \details{
 Note that there might be a many-to-many relations warning when merging the individual spectrolyzer subsets. This is expected and duplicates are removed before returning the dataset.

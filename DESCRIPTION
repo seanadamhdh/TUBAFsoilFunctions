@@ -1,12 +1,25 @@
 Package: TUBAFsoilFunctions
 Type: Package
 Title: Assorted functions used at TUBAF soil group.
-Version: 0.1.8
+Version: 0.2.0
 Author: Sean Adam
 Maintainer: Sean Adam <sean.adam@mineral.tu-freiberg.de>
 Description: Assortment of functions used in the TUBAF soil working group, e.g., DRIFTS and soliTOC data handling. Note that currently some warnings are thrown because of loading conflicts. Might fix in future.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: tidyverse, simplerspec, resemble, prospectr, caret, Cubist, pls, DescTools, e1071, plotly, progress
+Imports: 
+    tidyverse,
+    simplerspec,
+    resemble,
+    prospectr,
+    caret,
+    Cubist,
+    pls,
+    DescTools,
+    e1071,
+    plotly,
+    progress,
+    lifecycle
 RoxygenNote: 7.3.2
+Roxygen: list(markdown = TRUE)

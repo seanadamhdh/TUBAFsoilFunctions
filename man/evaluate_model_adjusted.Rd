@@ -15,7 +15,8 @@ evaluate_model_adjusted(data, obs = "obs", pred = "pred")
 }
 \description{
 This function is based on simplerspec::evaluate_model by
-Baumann P (2020). _simplerspec: Soil and plant spectroscopic model building and prediction_. R package version
-0.1.0.9001, <https://github.com/philipp-baumann/simplerspec>.
+Baumann P (2020). \emph{simplerspec: Soil and plant spectroscopic model building and prediction}. R package version
+0.1.0.9001, \url{https://github.com/philipp-baumann/simplerspec}.
 Several metrics have been added to the function (e.g. R2 and linsccc)
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

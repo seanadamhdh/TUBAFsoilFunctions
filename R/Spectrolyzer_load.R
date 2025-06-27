@@ -126,8 +126,8 @@ Spectro_load_parameter<-function(directory,
 
 
 #' @title Merge fingerprint and parameter data
-#' @details Merging of fingerprint and parameter files loaded with Spectro_load_fingerprint and Spectro_load_parameter.
-#' Intended primarily for internal use.
+#' @description Merging of fingerprint and parameter files loaded with Spectro_load_fingerprint and Spectro_load_parameter. Intended primarily for internal use.
+#' `r lifecycle::badge("experimental")`
 #' @param fingerprint fingerprint tibble, created by Spectro_load_fingerprints
 #' @param parameters fingerprint tibble, created by Spectro_load_parameters
 #' @note Warning messages: "Unknown or initialised colum: `Serial_No` ...
@@ -157,6 +157,7 @@ Spectro_merge_col<-function(fingerprint,parameter){
 
 #' @title Unzip helper
 #' @description Unzips .zip folders and saves locally. Internal, i.e., for processing of Spectrolyzer data.
+#' `r lifecycle::badge("experimental")`
 #' @param zip_directory zip-folder that is to be extracted, i.e.: `./somepath/folder/data.zip`
 #' @param new Target folder. Default is NULL. If NULL, unzipped folder is written in the same place as the zip folder,
 #'  with the same name as the zip folder,i.e.: `./somepath/folder/data`
@@ -197,6 +198,7 @@ unzip_local<-function(zip_directory,new_dir=NULL){
 #' @returns A tibble that contains all fingerprint and parameter data, joined by Serial_No and Date_Time. Duplicated mearsurements (i.e, by overlapping spectrolyzer data downloads) are removed.
 #' Spectra are saved as nested tibble in `spc`.
 #' @import tidyverse
+#' @import lifecycle
 #' @import progress
 #' @export
 Spectro_batch_load<-function(parent_dir,

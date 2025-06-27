@@ -3,6 +3,7 @@
 
 #' @title plot spectra
 #' @description A rudimentray function for displaying spc.
+#' `r lifecycle::badge("stable")`
 #' @param spc A tibble or data.frame with numeric colnames (i.e. `200`, `205` ...)
 #' @param alpha Set line transparancy (lower for larger n recommended). Default = 0.1
 #' @param xlab x-Label, Default "wavelength [nm]"
@@ -32,6 +33,7 @@ plot_spc<-function(spc,
 
 #' @title get best model for variable based on metric
 #' @description From a folder containing model object created with scripts used in the BDF-SSL framework, select the best model candidate based on a evaluation metric for a given variable.
+#' `r lifecycle::badge("experimental")`
 #' @note Not yet generalised
 #' @param model_eval model evaluation object created with evaluate_model_batch()
 #' @param prefix Model names prefix, usually defines model type
@@ -449,6 +451,7 @@ predict_variable=function(
 #' @title model evaluation (BDF-SSL)
 #' @description Batch model runs evaluation aggregation
 #' Currently only supports testset data (no gt300)
+#' `r lifecycle::badge("experimental")`
 #' @note evaluate_model_adjusted source path is legacy. Change in future
 #' @param root_dir Root directory to Project
 #' @param model_folder Folder containing model objects

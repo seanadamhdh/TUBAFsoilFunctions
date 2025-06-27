@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Assorted functions used at TUBAF soil group. • TUBAFsoilFunctions</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -13,6 +18,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Assorted functions used at TUBAF soil group.">
 <meta name="description" content="Assortment of functions used in the TUBAF soil working group, e.g., DRIFTS and soliTOC data handling. Note that currently some warnings are thrown because of loading conflicts. Might fix in future.">
 <meta property="og:description" content="Assortment of functions used in the TUBAF soil working group, e.g., DRIFTS and soliTOC data handling. Note that currently some warnings are thrown because of loading conflicts. Might fix in future.">
+<meta property="og:image" content="/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -22,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">TUBAFsoilFunctions</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +50,50 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p>Assortment of functions used in the soil working group at IBF, TU Bergakademie Freiberg. Install using remotes::install_github(“seanadamhdh/TUBAFsoilFunctions”). Was too lazy to implement proper import control (version &gt; x.y.z syntax), so it typically wants to install a lot of dependencies. If you keep your R up-to-date this should not be a problem, and you should be able to accect or skip the updates. If you use legacy versions of the r-packages or R itself, you should be careful, as a) Updates could break code written in older versions of R or use legacy versions of package, and b) it might take quite a wile to update everything.</p>
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="tubafsoilfunctions">TUBAFsoilFunctions<a class="anchor" aria-label="anchor" href="#tubafsoilfunctions"></a>
+</h1>
+</div>
+<div class="section level2">
+<h2 id="general-description">General description<a class="anchor" aria-label="anchor" href="#general-description"></a>
+</h2>
+<p>This package contains an assortment of functions used in the soil working group at IBF, TU Bergakademie Freiberg.</p>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
+<p>Install using <code>remotes::install_github("seanadamhdh/TUBAFsoilFunctions")</code>.</p>
+<p>Currently, packages are loaded lazy with (<strong>import?</strong>)<code>...</code> instead of (<strong>importFrom?</strong>)<code>...</code>. If you are running on a deprecated version of R, try skipping. It is planned to implement proper import handling at some point, though, for now, you should be fine with R&gt;4.3 and package versions from 2023 or newer. If you use legacy versions of the r-packages used by this package, or R itself, you should be careful, as a) Updates could break code written in older versions of R or use legacy versions of package, and b) it might take quite a wile to update everything. You might want to consider setting up a renv environment.</p>
+</div>
+<div class="section level3">
+<h3 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
+</h3>
+<p>This package contains an assortment of functions that I wrote during my doctorate. Roughly, they can be grouped into the following categories:</p>
+<ul>
+<li><p>Loading, processing, and cleaning of Elementar soliTOCcube data</p></li>
+<li><p>Loading, processing, and cleaning of Bruker Alpha DRIFTS data (heavily relying on Baumann (2020), Stevens and Ramirez-Lopez (2022), and Ramirez-Lopez et al. (2023))</p></li>
+<li><p>Loading, processing and cleaning of Spectrolyzer UV-Vis spectra</p></li>
+<li><p>Chemometric modelling with the caret Kuhn (2008) framework, including calibration, validation and application of models for midDRIFTS and UV-Vis data</p></li>
+<li><p>Loading, processing and cleaning (CO2) respiration data collected with SEMACHv3 chamber systems (also see <code>seanadamhdh/SEMACHv3</code> for a python single-file exe) and PriEco Pri8800 incubator data</p></li>
+<li><p>Assorted additional functions and helpers for smaller tasks, i.e., for soil profile data homogenisation, or sample label generator.</p></li>
+</ul>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-baumann2020" class="csl-entry">
+Baumann, Philipp. 2020. “Simplerspec: Soil and Plant Spectroscopic Model Building and Prediction.” <a href="https://github.com/philipp-baumann/simplerspec" class="external-link uri">https://github.com/philipp-baumann/simplerspec</a>.
+</div>
+<div id="ref-kuhn2008" class="csl-entry">
+Kuhn, Max. 2008. “Building Predictive Models in r Using the Caret Package.” <em>Journal of Statistical Software</em> 28 (5). <a href="https://doi.org/10.18637/jss.v028.i05" class="external-link uri">https://doi.org/10.18637/jss.v028.i05</a>.
+</div>
+<div id="ref-ramirez-lopez2023" class="csl-entry">
+Ramirez-Lopez, Leonardo, Antoine Stevens, Claudio Orellano, Raphael Viscarra Rossel, Zefang Shen, Alex Wadoux, and Timo Breure. 2023. “Resemble: Regression and Similarity Evaluation for Memory-Based Learning in Spectral Chemometrics.” <a href="https://cran.r-project.org/web/packages/resemble/index.html" class="external-link uri">https://cran.r-project.org/web/packages/resemble/index.html</a>.
+</div>
+<div id="ref-stevens2022" class="csl-entry">
+Stevens, Antoine, and Leonardo Ramirez-Lopez. 2022. “An Introduction to the Prospectr Package.” <a href="https://cran.r-project.org/web/packages/prospectr/index.html" class="external-link uri">https://cran.r-project.org/web/packages/prospectr/index.html</a>.
+</div>
+</div>
+</div>
+</div>
+</div>
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">

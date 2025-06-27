@@ -7,7 +7,7 @@
 plot_spc(spc, alpha = 0.1, xlab = "wavelength [nm]", ylab = "Absorbance")
 }
 \arguments{
-\item{spc}{A tibble or data.frame with numeric colnames (i.e. `200`, `205` ...)}
+\item{spc}{A tibble or data.frame with numeric colnames (i.e. \code{200}, \code{205} ...)}
 
 \item{alpha}{Set line transparancy (lower for larger n recommended). Default = 0.1}
 
@@ -15,6 +15,7 @@ plot_spc(spc, alpha = 0.1, xlab = "wavelength [nm]", ylab = "Absorbance")
 }
 \description{
 A rudimentray function for displaying spc.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }
 \details{
 Simple lineplot of spc is returned.

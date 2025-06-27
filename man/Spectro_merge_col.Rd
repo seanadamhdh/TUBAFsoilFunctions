@@ -15,13 +15,10 @@ Spectro_merge_col(fingerprint, parameter)
 Tibble with merged fingerprint and parameter data.
 }
 \description{
-Merge fingerprint and parameter data
-}
-\details{
-Merging of fingerprint and parameter files loaded with Spectro_load_fingerprint and Spectro_load_parameter.
-Intended primarily for internal use.
+Merging of fingerprint and parameter files loaded with Spectro_load_fingerprint and Spectro_load_parameter. Intended primarily for internal use.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
-Warning messages: "Unknown or initialised colum: `Serial_No` ...
+Warning messages: "Unknown or initialised colum: \code{Serial_No} ...
 known warning, function switches automatically to alternate case.
 }

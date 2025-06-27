@@ -6,6 +6,7 @@
 #' to be added to a reference solution to reach a desired change in delta permil isotope abundance.
 #' Uses the assumption that isotope tracer amount is negligible compared to light fraction and
 #' that the weight difference between heavy and light isotopes is also negligable.
+#' `r lifecycle::badge("stable")`
 #' @param delta_x The delta value in permil of the current tracer abundance in the solution
 #' @param delta_y The delta value in permil of the desired tracer abundance in the solution
 #' @param R_std The isotopic ratio if the reference standard. Default is VSMOV (1/6420) for deuterium.

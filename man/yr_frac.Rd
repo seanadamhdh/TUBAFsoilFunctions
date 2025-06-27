@@ -7,10 +7,11 @@
 yr_frac(dates, start = "1995-01-01")
 }
 \arguments{
-\item{dates}{vector or single date as character ("%Y-%m-%d"-format) or POSIXct or Date}
+\item{dates}{vector or single date as character ("\%Y-\%m-\%d"-format) or POSIXct or Date}
 
-\item{start}{Reference date as character ("%Y-%m-%d"-format) or POSIXct or Date. Can be later than dates - returns negative values.}
+\item{start}{Reference date as character ("\%Y-\%m-\%d"-format) or POSIXct or Date. Can be later than dates - returns negative values.}
 }
 \description{
 Calculates time difference from dates as fraction of years. Small error possible because using average of 365.25 days/year for calculation.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

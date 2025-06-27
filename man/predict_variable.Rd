@@ -33,5 +33,5 @@ return ERROR when spc set for best candidate is not available}
 }
 \description{
 Selection of best model for agiven variable based on evaluation metric from a set of models and prediction for target spectra
-`r lifecycle::badge("superseded")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 }

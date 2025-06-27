@@ -1,9 +1,8 @@
 
 #' @title Load and pre-process OPUS raw spectra files (file.O)
-#'
 #' @description This function loads a set of raw opus spectra files into R, processes them into a nested tibble format (propectr-friendly),
-#' and applies several pre-processing tequnices.
-#'
+#' and applies several pre-processing techniques.
+#' `r lifecycle::badge("stable")`
 #' @param folder a folder containing the raw spectra
 #' @param save_location where should the produced files be saved
 #' @param save logical: should the final output be saved as RDS in 'save_location'?
@@ -159,7 +158,7 @@ OPUSraw_to_Preprocessed<-function(
 
   }
 
-  ###################################
+  ################################# ##
     print("spc formatted")
 
   # Savitzky-Golay smoothing
@@ -264,6 +263,7 @@ OPUSraw_to_Preprocessed<-function(
 #' @title Spectra plotter
 #' @description Simple plotting interface for spc datasets created with OPUSraw_to_preprocessed(). Note: Large amount of spc might be laggy.
 #' Subset data beforehand or set sample size to smaller number for random sampling.
+#' `r lifecycle::badge("experimental")`
 #' @param dataset a spc dataset, as created by OPUSraw_to_Preprocessed
 #' @param spc_id The id of the nested spc matrix. Choose from c("spc","spc_rs","spc_sg","spc_sg_bl",
 #' "spc_sg_bl_rs4","spc_sg_snv","spc_sg_snv_rs4")

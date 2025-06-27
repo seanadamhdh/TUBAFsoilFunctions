@@ -12,5 +12,6 @@ conf_95(pred, obs = mean(pred))
 \item{obs}{vector with reference values. Default is mean(pred)}
 }
 \description{
-calculates (linear) 95 % confidence band around values or for obs vs. pred
+calculates (linear) 95 \% confidence band around values or for obs vs. pred
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 }

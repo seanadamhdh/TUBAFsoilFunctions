@@ -36,7 +36,7 @@ return ERROR when spc set for best candidate is not available}
 
 \item{diss_limit}{Mahalanobis distance limit for outlier flagging}
 
-\item{manual}{Select model manually. `prefix`, `variable`, `metric`, `maximise`, `eval_model_folder` are disregarded.}
+\item{manual}{Select model manually. \code{prefix}, \code{variable}, \code{metric}, \code{maximise}, \code{eval_model_folder} are disregarded.}
 
 \item{model_obj_X_name}{Adjust name of spc set identifier in model$documentation. Default is spc_set. If NULL, uses manual_set}
 
@@ -50,7 +50,7 @@ return ERROR when spc set for best candidate is not available}
 }
 \description{
 Selection of best model for agiven variable based on evaluation metric from a set of models and prediction for target spectra
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \details{
 Wrapper for predicting variables with pre-trained caret train-objects from new spectra or MBL.

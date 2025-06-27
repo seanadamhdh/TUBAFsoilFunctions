@@ -3,6 +3,7 @@
 #' Baumann P (2020). _simplerspec: Soil and plant spectroscopic model building and prediction_. R package version
 #' 0.1.0.9001, <https://github.com/philipp-baumann/simplerspec>.
 #' Several metrics have been added to the function (e.g. R2 and linsccc)
+#' `r lifecycle::badge("stable")`
 #' @param data Tibble, data.frame containing at least 2 columns with numeric data (observations, predicitions)
 #' @param obs String for selectingobservation column
 #' @param pred String for selecting prediction column

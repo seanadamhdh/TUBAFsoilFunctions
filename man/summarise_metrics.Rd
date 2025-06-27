@@ -18,4 +18,5 @@ summary_df: Tibble with column varaible, if defined grouping_variable and corres
 }
 \description{
 calculates set of basic metrics (min,max, quartiles, mean...)
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

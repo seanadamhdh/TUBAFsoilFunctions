@@ -12,5 +12,6 @@ RMSE(obs, pred)
 \item{pred}{Predicted values}
 }
 \description{
-root mean squared error
+Root mean squared error. Nas are removed.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

@@ -15,5 +15,5 @@ Tibble with colnames changed to ..., var1, Flags_var1, var2, Flags_var2, ...
 \description{
 Helper function for renaming Flag columns in spectrolyzer parameter files. Intended for internal use.
 Colnames should be structured as ..., var1, Flags...n, var2, Flags...n, ... where n is the column index automatically assigned by read_csv
-`r lifecycle::badge("experimental")`
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
