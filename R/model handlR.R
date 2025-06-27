@@ -1,6 +1,32 @@
 
 
 
+#' @title plot spectra
+#' @description A rudimentray function for displaying spc.
+#' @param spc A tibble or data.frame with numeric colnames (i.e. `200`, `205` ...)
+#' @param alpha Set line transparancy (lower for larger n recommended). Default = 0.1
+#' @param xlab x-Label, Default "wavelength [nm]"
+#' @param xlab y-Label, Default "Absorbance"
+#' @details Simple lineplot of spc is returned.
+#' @export
+plot_spc<-function(spc,
+                   alpha=.1,
+                   xlab="wavelength [nm]",
+                   ylab="Absorbance"){
+  return(
+    matplot(x=as.numeric(colnames(spc)),
+            y=t(spc),
+            type="l",
+            col=rgb(0,0,0,alpha),
+            lty="solid",
+            #ylim=c(-1,10),
+            xlab=xlab,
+            ylab=xlab
+    )
+  )
+}
+
+
 
 
 
@@ -29,9 +55,205 @@ get_best=function(model_eval,
   return(out)
 }
 
-#' @title predict variable (BDF-SSL framework)
+
+
+
+
+
+
+#' @title predict variable (generalised)
+#' @description Selection of best model for agiven variable based on evaluation metric from a set of models and prediction for target spectra
+#' `r lifecycle::badge("experimental")`
+#' @param taget_data Nested tibble with spc data at different pre-processing steps, matching the structure of the calibration data used for modelling
+#' @param model_folder Folder containing trained models as serialised (rds) R objects.
+#' @param eval_model_folder Location of serialised (rds) evaluation object
+#' @param prefix Model names prefix, usually defines model type
+#' @param variable Variable for which the best model is to be searched
+#' @param metric evaluation statistic which is used to select best model.
+#' @param maximise Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.
+#' @param restrict If True only regard models for which spc preprocessing sets are available. If False, search in all models for best candidate and
+#' return ERROR when spc set for best candidate is not available
+#' @param diss_limit Mahalanobis distance limit for outlier flagging
+#' @param manual Select model manually. `prefix`, `variable`, `metric`, `maximise`, `eval_model_folder` are disregarded.
+#' @param model_obj_X_name Adjust name of spc set identifier in model$documentation. Default is spc_set. If NULL, uses manual_set
+#' @param manual_set Manually assign spc_set for compatability
+#' @param X_scaling Scaling factor for spectra. X = X_raw / X_scaling. I.e., for conversion of Lambda365-abs to Spctrolyzer-abs... log10 -> ln conversion and cm-1 -> m-1. Default is set to 230.2585
+#' @details Wrapper for predicting variables with pre-trained caret train-objects from new spectra or MBL.
+#' @import tidyverse
+#' @import Cubist
+#' @import resemble
+#' @import caret
+#' @import pls
+#' @export
+predict_variable2=function(
+    target_data,
+    model_folder,
+    eval_model_folder=model_folder, # mbl needs different dir
+    prefix="cubist_",
+    variable_="CORG",
+    metric="test.rmse",
+    maximise=F,
+    restrict=T,
+    diss_limit=2.5,
+    manual=NULL,
+    model_obj_X_name="spc_set",
+    manual_set="spc",
+    X_scaling=230.2585
+){
+  if(is.null(manual)){
+
+    if(!str_ends(model_folder,"/")){
+      model_folder=paste0(model_folder,"/")
+    }
+
+    # check spc set availability
+    spc_set_target=(str_split_fixed(
+      str_split_fixed(
+        list.files(model_folder,pattern = prefix),
+        pattern ="_",n=2)[,2],
+      pattern="-",n=2)[,1])%>%unique
+
+
+    # mahD check
+    #... either here, or after model candidate selection
+
+
+
+    #read model evaluation
+    print(eval_model_folder) # debug
+    evaluation=read_rds(paste0(eval_model_folder,"evaluation"))
+
+    ## get model candidate ####
+    if(restrict==T){ #choose only from avail spc sets
+      avail_spc=unique(evaluation$eval$set)[which(unique(evaluation$eval$set)%in%spc_set_target)]
+      evaluation_data=filter(evaluation$eval,set%in%avail_spc)
+
+      # get best candidate
+      best_model=get_best(
+        model_eval=evaluation_data,
+        prefix = prefix,
+        variable_=variable_,
+        metric = metric,
+        maximise = maximise)
+    }else{
+      evaluation_data=evaluation$eval
+      # get best candidate
+      best_model=get_best(
+        model_eval=evaluation_data,
+        prefix = prefix,
+        variable_=variable_,
+        metric = metric,
+        maximise = maximise)
+      # in case not avail, return empty
+      if(!best_model$documentation$spc_set%in%spc_set_target){
+        print("Spc preprocessing of the best model candidate is not available in the target dataset.
+              Check your target dataset or consider using restrict=T to limit model selection to avaialable spc-pretratments.")
+        return(NULL)
+      }
+
+    }
+  }else{
+    best_model=manual
+  }
+  print(best_model)
+
+  ### load model candidate
+  model=read_rds(paste0(model_folder,best_model))
+
+
+
+
+  ### compare reference and target spc (similarity metrics)
+  if(!is.null(model_obj_X_name)){
+    target_spc=target_data[[ model$documentation[[model_obj_X_name]] ]]/X_scaling
+  }else{
+    target_spc=target_data[[manual_set]]/X_scaling
+  }
+
+
+
+  # calculate pls scores and mahD
+  diss_data=dissimilarity(
+    Xr = as.matrix(model$trainingData%>%select(-.outcome)),
+    Yr = model$trainingData%>%pull(.outcome),
+    Xu = as.matrix(target_spc),
+    diss_method = "pca.nipals",
+    return_projection = TRUE
+  )
+
+
+  spc_diss=bind_cols(sample_id=target_data$sample_id,
+                     mean_diss=colMeans(diss_data$dissimilarity))
+  spc_diss=mutate(spc_diss,
+                  diss_flag=if_else(mean_diss>diss_limit,"outlier_spc","ok")
+  )
+
+  # for debug
+  cat("Target spectra above dissimilarity limit of ",
+      diss_limit,"\n",length(na.omit(spc_diss$diss_flag)),"\n\n")
+
+  ### plot ####
+
+  # reference projection
+  (diss_data$projection$scores %>% as_tibble())[c((1):(nrow(model$trainingData%>%select(-.outcome)))),] %>%
+    ggplot(aes(x = pc_1, y = pc_2)) +
+    geom_point(color="black") +
+    # target projection
+    geom_point(
+      data = (diss_data$projection$scores %>%
+
+                as_tibble())[c((nrow(model$trainingData%>%select(-.outcome)) + 1):(nrow(model$trainingData%>%select(-.outcome)) + nrow(target_spc))), ]%>%
+        as_tibble%>%
+        bind_cols(mean_mahD=colMeans(diss_data$dissimilarity),outlier=if_else(colMeans(diss_data$dissimilarity) > diss_limit, "outlier", "ok")),
+      aes(
+        col = mean_mahD,
+        shape = outlier,
+        size = outlier
+      )
+    ) + theme_minimal() +
+    scale_color_steps(low = "blue", high = "red") +
+    scale_shape_manual(breaks = c("outlier", "ok"), values = c(4, 16)) +
+    scale_size_manual(breaks = c("outlier", "ok"), values = c(3, 1))->plt
+
+  # de-transformation for log1p models
+  print("predicting...")
+
+  if(any(class(model)=="train")){ #e.g. for pls, cubist, svm... everything caret should work
+    if(str_detect(best_model,"log1p")){
+      print("De-logging predictions...")
+      predictions=bind_cols(sample_id=target_data$sample_id,pred=exp(predict(model,target_spc))-1)
+    }else{
+      predictions=bind_cols(sample_id=target_data$sample_id,pred=predict(model,target_spc))
+    }
+  }else{
+    print("ERROR Model type not recognised")
+    return()
+  }
+
+
+
+  predictions=list(
+    plt=plt,
+    model=model,
+    model_name=best_model,
+    predictions=predictions,
+    spc_diss=spc_diss,
+    diss_data=diss_data)
+  return(predictions)
+}
+
+
+
+
+
+
+
+
+
+#' @title predict variable (BDF-SSL framework, legacy version)
 #' @description
 #' Selection of best model for agiven variable based on evaluation metric from a set of models and prediction for target spectra
+#' `r lifecycle::badge("superseded")`
 #' @param taget_data Nested tibble with spc data at different pre-processing steps
 #' @param prefix Model names prefix, usually defines model type
 #' @param variable Variable for which the best model is to be searched
