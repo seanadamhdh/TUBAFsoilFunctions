@@ -4,6 +4,7 @@
 
 #' @title confidence band calculator
 #' @description calculates (linear) 95 % confidence band around values or for obs vs. pred
+#' `r lifecycle::badge("deprecated")`
 #' @param pred vector with (predicted) values
 #' @param obs vector with reference values. Default is mean(pred)
 #' @export
@@ -21,6 +22,7 @@ conf_95<-function(pred,obs=mean(pred)){
 
 #' @title ggplot default color emulator
 #' @description Emulate ggplot color scale
+#' `r lifecycle::badge("stable")`
 #' @param n number of colors to generate
 #' @export
 gg_color_hue <- function(n) {
@@ -33,6 +35,7 @@ gg_color_hue <- function(n) {
 
 #' @title  basic statistics summary
 #' @description calculates set of basic metrics (min,max, quartiles, mean...)
+#' `r lifecycle::badge("stable")`
 #' @param dataset tibble, data.frame with at least one numeric value
 #' @param grouping_variable Optional. String or vector of strings describing the columns that should be used for grouping
 #' @param variables String or vector of strings of variables that should be summarised.
@@ -68,6 +71,7 @@ summarise_metrics<-function(dataset,grouping_variables=NULL,variables=NULL){
 
 #' @title wavenumber-wavelength converter
 #' @description Wavenumber to wavelength conversion. Works both ways (wn-wl, wl-wn).
+#' `r lifecycle::badge("stable")`
 #' @param x Numeric vector
 #' @returns converted to respective other unit.
 #' @export
@@ -78,6 +82,7 @@ wavenumber_wavelength<-function(x){return(10^9/(x*10^2))}
 #' @title duplication check
 #' @description Checks if a vector contains any duplicated values. Unlike duplicated(), it returns TRUE for all values that appear more than once.
 #' duplicated() returns TRUE only for the 2nd element.
+#' `r lifecycle::badge("stable")`
 #' @param x Input vector
 #' @returns boolean vector of length length(x).
 #' @export
@@ -85,6 +90,8 @@ all_duplicates<-function(x){return(duplicated(x)|duplicated(x,fromLast=T))}
 
 
 #' @title mean error
+#' @description mean error
+#' `r lifecycle::badge("stable")`
 #' @param obs Observations, reference values
 #' @param pred Predicted values
 #' @export
@@ -95,6 +102,8 @@ ME <- function(obs, pred){
 
 
 #' @title root mean squared error
+#' @description Root mean squared error. Nas are removed.
+#' `r lifecycle::badge("stable")`
 #' @param obs Observations, reference values
 #' @param pred Predicted values
 #' @export
@@ -104,6 +113,8 @@ RMSE <- function(obs, pred){
 
 
 #' @title degree of determination
+#' @description R2 degree of determination
+#' `r lifecycle::badge("stable")`
 #' @param obs Observations, reference values
 #' @param pred Predicted values
 #' @export
@@ -122,6 +133,7 @@ R2 <- function(obs, pred){
 
 #' @title get ggthemes discrete colorblind-safe colors
 #' @description https://jrnold.github.io/ggthemes/reference/colorblind.html
+#' `r lifecycle::badge("stable")`
 #' @returns 8 discrete colors as hex-string vector
 #' @export
 colorblind_safe_colors=function(){
@@ -141,6 +153,7 @@ colorblind_safe_colors=function(){
 
 #' @title Date to years after start
 #' @description Calculates time difference from dates as fraction of years. Small error possible because using average of 365.25 days/year for calculation.
+#' `r lifecycle::badge("stable")`
 #' @param dates vector or single date as character ("%Y-%m-%d"-format) or POSIXct or Date
 #' @param start Reference date as character ("%Y-%m-%d"-format) or POSIXct or Date. Can be later than dates - returns negative values.
 #' @export
@@ -148,6 +161,7 @@ yr_frac=function(dates,start="1995-01-01"){return(as.numeric(difftime(dates,star
 
 #' @title none
 #' @description Function that does absolutely nothing and returns data as is.
+#' `r lifecycle::badge("stable")`
 #' @param x Input
 #' @returns x
 #' @export

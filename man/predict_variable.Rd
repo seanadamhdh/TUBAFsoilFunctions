@@ -2,7 +2,7 @@
 % Please edit documentation in R/model handlR.R
 \name{predict_variable}
 \alias{predict_variable}
-\title{predict variable (BDF-SSL framework)}
+\title{predict variable (BDF-SSL framework, legacy version)}
 \usage{
 predict_variable(
   target_data,
@@ -33,4 +33,5 @@ return ERROR when spc set for best candidate is not available}
 }
 \description{
 Selection of best model for agiven variable based on evaluation metric from a set of models and prediction for target spectra
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 }

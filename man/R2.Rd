@@ -12,5 +12,6 @@ R2(obs, pred)
 \item{pred}{Predicted values}
 }
 \description{
-degree of determination
+R2 degree of determination
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

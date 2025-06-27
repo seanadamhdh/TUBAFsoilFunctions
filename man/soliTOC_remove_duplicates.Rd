@@ -40,4 +40,5 @@ Function that removes repeated samples from soliTOC file based on
 a) lowest MAE to reference data for SOC (named CORG)
 b) averageing duplicates
 c) selecting the latest measured replicate
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

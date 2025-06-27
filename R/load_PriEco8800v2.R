@@ -3,6 +3,7 @@
 
 #' @title Flux calculator (legacy version)
 #' @description Legacy flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.
+#' `r lifecycle::badge("experimental")`
 #' @note optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise
 #' @param dataset Flux measurement data for slope calculation as loaded by load_pri8800_data.
 #' @param V_ch_list Total system volume (accumulation volume) of each incubation vessel. If NA defaults to 1. cubic meter
@@ -105,6 +106,7 @@ calc_flux_manual=function(dataset,V_ch_list=c(NA),A_ch=NA,wt_list=c(NA),start_cu
 
 #' @title PriEco8800 Flux calculator
 #' @description Manual flux calculation for PriEco8800 incubator.
+#' `r lifecycle::badge("experimental")`
 #' @note optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise
 #' @param dataset Flux measurement data for slope calculation as loaded by load_pri8800_data.
 #' @param heigth_list Sample height in the cylinder in cm
@@ -222,6 +224,8 @@ calc_flux_manual2=function(dataset,
 
 #' @title load Pri8800 data
 #' @description load different files created by Pri8800 (both inidvidual slopes and final output files).
+#' `r lifecycle::badge("experimental")`
+#' @note Known issue: First sample of a run is not evaluated.
 #' @param folder Path to folder containing measurement files.
 #' @param contains_folders Boolean. Recursive read in or not.
 #' @param calculate_flux_manual Boolean. Should flux be re-calculated from slope data? This might be slow.
@@ -274,6 +278,8 @@ load_pri8800_data=function(
 
 
     print("formatting slope")
+
+    # ---- POTENTIAL ISSuE here.See @note ---- #
     Meas_data=shift.column(Meas_data,"round",newNames = "next_round",len=1,up = F)%>%
       mutate(delta_round=round-next_round)%>%
       mutate(run=cumsum(delta_round<0))

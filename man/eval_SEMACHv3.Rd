@@ -31,4 +31,5 @@ Formatted raw SEMACHv3 measurement file
 }
 \description{
 A function for the calculation of respiration fluxes from SEMACH files.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

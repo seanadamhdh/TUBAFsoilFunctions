@@ -18,4 +18,5 @@ Vector of ID strings corresponding to each entry (vector) or row (tibble) of dat
 }
 \description{
 Soil lab labels generator. Multi-digit letter codes.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

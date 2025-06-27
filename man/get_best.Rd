@@ -25,6 +25,7 @@ get_best(
 }
 \description{
 From a folder containing model object created with scripts used in the BDF-SSL framework, select the best model candidate based on a evaluation metric for a given variable.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 Not yet generalised

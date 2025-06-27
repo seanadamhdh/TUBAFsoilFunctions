@@ -14,4 +14,5 @@ Formatted raw SEMACHv3 measurement file
 }
 \description{
 A function for loading and formatting SEMACHv3 csv measurement files.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

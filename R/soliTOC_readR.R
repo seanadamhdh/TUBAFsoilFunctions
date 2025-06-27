@@ -2,6 +2,7 @@
 
 #' @title Fix soliTOC csv colnames
 #' @description Automatically fix shifted colnames in soliTOC excel exports.
+#' `r lifecycle::badge("experimental")`
 #' @param soliTOC_raw_excel An Excel file as exported from soliTOC software
 #' @param save Should the fixed df be saved as csv? Default FALSE
 #' @param save_location Optional: a filepath (C:/dir/other_dir/myFile.csv), where the fixed df should be stored as csv. Default is "keep". This uses soliTOC_raw_excel to get a filepath and saves output as basename_fixed.csv
@@ -82,6 +83,7 @@ fix_soliTOC_colnames=function(soliTOC_raw_excel,
 #' 1-1-1-1-1-1-1-1-1-1-2-2-2-2-2-2-2-2
 #' Then, factor_1 would be calculated as S_acutal/S1 and applied to all samples.
 #' A (sub)string of the sample names that the user wants to get returned needs to be provided.
+#' `r lifecycle::badge("stable")`
 #' @param dataset Exported soliTOC csv file
 #' @param IC_col Sample names column. Should also include standard identifiers (Default is Name, as in soliTOC software)
 #' @param std_id Identifier of the standards for dayfactor calculation (default is caco3)
@@ -162,6 +164,7 @@ get_dayfactors<-function(dataset,    #data.frame or tibble
 
 #' @title pull_set_soliTOC
 #' @description Function for the correction and aggregation of SoliTOC measurements. Loads a raw excel file as exported from soliTOC software. Calculates and applies dayfactor correction based on standard measurements. Select and aggregate samples based on identifer string(s).
+#' `r lifecycle::badge("stable")`
 #' @param soliTOC_file Excel file containing raw export from soliTOC Elementar software. Check for proper column naming, as Date Time is typically read as 2 columns, bt only one column name. This shifts all subsequent col names to the left. Fix manually.
 #' @param ID_col_set Which column contains the identifier for the sample selection? Default is "Name"
 #' @param set_id String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_set` by str_detect
@@ -257,6 +260,7 @@ pull_set_soliTOC=function(soliTOC_file,
 #' a) lowest MAE to reference data for SOC (named CORG)
 #' b) averageing duplicates
 #' c) selecting the latest measured replicate
+#' `r lifecycle::badge("stable")`
 #' @param dataset soliTOC data.frame or tibble that has already undergone get_dayfactors.
 #' Using raw soliTOC data could lead to loss of e.g., standard data, as they would be flagged as duplicates.
 #' @param reference Logical. Is reference data provided? If TRUE, a column labeled CORG containing SOC data needs to be attached

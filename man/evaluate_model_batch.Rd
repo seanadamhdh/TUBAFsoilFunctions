@@ -30,6 +30,7 @@ evaluate_model_batch(
 \description{
 Batch model runs evaluation aggregation
 Currently only supports testset data (no gt300)
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 evaluate_model_adjusted source path is legacy. Change in future

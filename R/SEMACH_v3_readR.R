@@ -6,7 +6,7 @@
 #' @title load_SEMACHv3_file
 #' @description
 #' A function for loading and formatting SEMACHv3 csv measurement files.
-#'
+#' `r lifecycle::badge("experimental")`
 #' @param path A file path to a SEMACHv3 .csv measurement file.
 #' @returns Formatted raw SEMACHv3 measurement file
 #' @import tidyverse
@@ -38,10 +38,9 @@ load_SEMACHv3_file=function(path){
 }
 
 #' @title laod_SEMACHv3_raw
-#' @description
-#' A function to load one or multiple SEMACHv3 raw files and add them to a tibble.
+#' @description A function to load one or multiple SEMACHv3 raw files and add them to a tibble.
+#' `r lifecycle::badge("experimental")`
 #' @param path A file path to a SEMACHv3 .csv measurement file.
-#'
 #' @returns Formatted raw SEMACHv3 measurement files as a tibble. File name is used as ID.
 #' @import tidyverse
 #' @export
@@ -72,15 +71,14 @@ load_SEMACHv3_raw=function(path){
 
 #' @title eval_SEMACHv3
 #' @description A function for the calculation of respiration fluxes from SEMACH files.
+#' `r lifecycle::badge("experimental")`
 #' @param path A file path to a SEMACHv3 .csv measurement file.
 #' @param height_offset Additional chamber volume will be calculated from extra height in m.
 #' @param SCD30_scaling Scaling factor a for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b)
 #' @param SCD30_offset Scaling offset b for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b)
 #' @param cutoff_start The first n seconds of the measurement will be disregarded (equillibration period, 60s recommended).
 #' @param cutoff_end Measurement will only be used to this point (in s). Long measurements might have non-linear behaviour.
-#'
 #' @returns Formatted raw SEMACHv3 measurement file
-#'
 #' @import tidyverse
 #' @export
 eval_SEMACHv3=function(path,

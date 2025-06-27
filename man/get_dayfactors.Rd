@@ -18,10 +18,10 @@ get_dayfactors(
 
 \item{std_id}{Identifier of the standards for dayfactor calculation (default is caco3)}
 
-\item{value_col}{Column that contains measurement of standard (default is 'TC  [%]',
+\item{value_col}{Column that contains measurement of standard (default is 'TC  \link{\%}',
 as caco3 should not contain OC, so this captures all released C)}
 
-\item{actual}{Theoretical standard concentration in wt-% (default for caco3 is 12)}
+\item{actual}{Theoretical standard concentration in wt-\% (default for caco3 is 12)}
 
 \item{keep_batch}{Logical: Function creates helper variable "batch" to assign dayfactors. Should this be kept?
 Default is FALSE. Used mostly for debug.}
@@ -41,4 +41,5 @@ S-S-S-A-B-C-D-E-F-G-S-S-S-H-I-J-K-L
 1-1-1-1-1-1-1-1-1-1-2-2-2-2-2-2-2-2
 Then, factor_1 would be calculated as S_acutal/S1 and applied to all samples.
 A (sub)string of the sample names that the user wants to get returned needs to be provided.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

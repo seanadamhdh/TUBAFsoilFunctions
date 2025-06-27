@@ -15,4 +15,5 @@ boolean vector of length length(x).
 \description{
 Checks if a vector contains any duplicated values. Unlike duplicated(), it returns TRUE for all values that appear more than once.
 duplicated() returns TRUE only for the 2nd element.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }
