@@ -6,6 +6,8 @@
 \alias{TUBAFsoilFunctions-package}
 \title{TUBAFsoilFunctions: Assorted functions used at TUBAF soil group.}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Assortment of functions used in the TUBAF soil working group, e.g., DRIFTS and soliTOC data handling. Note that currently some warnings are thrown because of loading conflicts. Might fix in future.
 }
 \keyword{internal}
