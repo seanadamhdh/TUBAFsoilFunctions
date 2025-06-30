@@ -1,24 +1,20 @@
 ---
-title: "TUBAFsoilFunctions"
 output: github_document
-editor_options: 
-  markdown: 
-    wrap: sentence
 bibliography: references.bib
 ---
 
-
+# TUBAFsoilFunctions <img src="man/figures/logo.png" align="right" width = "150" />
 
 
 ```{r setup, include=FALSE}
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      collapse = TRUE,
+                      comment = "#>",
+                      fig.path = "man/figures/")
 ```
 
-## General description
-This package contains an assortment of functions used in the soil working group at IBF, TU Bergakademie Freiberg.
-
-### Installation
+## Installation
 
 Install using `remotes::install_github("seanadamhdh/TUBAFsoilFunctions")`.
 
@@ -28,10 +24,10 @@ It is planned to implement proper import handling at some point, though, for now
 If you use legacy versions of the r-packages used by this package, or R itself, you should be careful, as a) Updates could break code written in older versions of R or use legacy versions of package, and b) it might take quite a wile to update everything.
 You might want to consider setting up a renv environment.
 
-### Contents
+## Contents
 
-This package contains an assortment of functions that I wrote during my doctorate.
-Roughly, they can be grouped into the following categories:
+This package contains an assortment of functions that I wrote during my doctorate. This includes functions for processing data from several laboratory and field instruments used by the soil working group at IBF, TU Bergakademie Freiberg.
+Roughly, contents of this package can be grouped into the following categories:
 
 -   Loading, processing, and cleaning of Elementar soliTOCcube data
 
