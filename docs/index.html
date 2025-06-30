@@ -67,7 +67,7 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Install using <code>remotes::install_github("seanadamhdh/TUBAFsoilFunctions")</code>.</p>
-<p>Currently, packages are loaded lazy with (<strong>import?</strong>)<code>...</code> instead of (<strong>importFrom?</strong>)<code>...</code>. If you are running on a deprecated version of R, try skipping. It is planned to implement proper import handling at some point, though, for now, you should be fine with R&gt;4.3 and package versions from 2023 or newer. If you use legacy versions of the r-packages used by this package, or R itself, you should be careful, as a) Updates could break code written in older versions of R or use legacy versions of package, and b) it might take quite a wile to update everything. You might want to consider setting up a renv environment.</p>
+<p>Currently, packages are loaded lazy with <code>@import ...</code> instead of <code>@importFrom ...</code>. If you are running on a deprecated version of R, try skipping. It is planned to implement proper import handling at some point, though, for now, you should be fine with R&gt;4.3 and package versions from 2023 or newer. If you use legacy versions of the r-packages used by this package, or R itself, you should be careful, as a) Updates could break code written in older versions of R or use legacy versions of package, and b) it might take quite a wile to update everything. You might want to consider setting up a renv environment.</p>
 </div>
 <div class="section level2">
 <h2 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
