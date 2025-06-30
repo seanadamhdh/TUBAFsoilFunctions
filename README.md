@@ -1,14 +1,14 @@
 
-# TUBAFsoilFunctions <img src="man/figures/logo.png" align="right" width = "150" />
+# TUBAFsoilFunctions <img src="man/figures/logo.png" align="right" width = "150" alt=""/>
 
 ## Installation
 
 Install using
 `remotes::install_github("seanadamhdh/TUBAFsoilFunctions")`.
 
-Currently, packages are loaded lazy with (**import?**)`...` instead of
-(**importFrom?**)`...`. If you are running on a deprecated version of R,
-try skipping. It is planned to implement proper import handling at some
+Currently, packages are loaded lazy with `@import ...` instead of
+`@importFrom ...`. If you are running on a deprecated version of R, try
+skipping. It is planned to implement proper import handling at some
 point, though, for now, you should be fine with R\>4.3 and package
 versions from 2023 or newer. If you use legacy versions of the
 r-packages used by this package, or R itself, you should be careful, as
