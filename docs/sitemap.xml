@@ -31,6 +31,10 @@
 <url><loc>/reference/R2.html</loc></url>
 <url><loc>/reference/rename_flags.html</loc></url>
 <url><loc>/reference/RMSE.html</loc></url>
+<url><loc>/reference/SEMACHv3_batch_evaluation.html</loc></url>
+<url><loc>/reference/SEMACHv3_calib.html</loc></url>
+<url><loc>/reference/SEMACHv3_plotRes.html</loc></url>
+<url><loc>/reference/SEMACHv3_plot_raw.html</loc></url>
 <url><loc>/reference/soliTOC_remove_duplicates.html</loc></url>
 <url><loc>/reference/spectra_plotter.html</loc></url>
 <url><loc>/reference/Spectro_batch_load.html</loc></url>

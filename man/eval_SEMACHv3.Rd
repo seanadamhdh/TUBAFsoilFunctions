@@ -7,10 +7,12 @@
 eval_SEMACHv3(
   path,
   height_offset = 0,
-  SCD30_scaling = 1.129,
-  SCD30_offset = 23.953,
+  SCD30_scaling = 1,
+  SCD30_offset = 0,
   cutoff_start = 61,
-  cutoff_end = 3600
+  cutoff_end = 3600,
+  A_chamber = 0.0434,
+  V_chamber.default = 0.01302
 )
 }
 \arguments{
@@ -18,18 +20,22 @@ eval_SEMACHv3(
 
 \item{height_offset}{Additional chamber volume will be calculated from extra height in m.}
 
-\item{SCD30_scaling}{Scaling factor a for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b)}
+\item{SCD30_scaling}{Scaling factor a for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b). Default = 1, meaning no change.}
 
-\item{SCD30_offset}{Scaling offset b for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b)}
+\item{SCD30_offset}{Scaling offset b for the SCD30 CO2 sensor for post-hoc calibration. (CO2.corr=a*CO2.SCD30+b) Default = 0, meaning no change.}
 
 \item{cutoff_start}{The first n seconds of the measurement will be disregarded (equillibration period, 60s recommended).}
 
 \item{cutoff_end}{Measurement will only be used to this point (in s). Long measurements might have non-linear behaviour.}
+
+\item{A_chamber}{Chamber base area. For KG250 rings ~ .0434 m² (default).}
+
+\item{V_chamber.default}{Default system volume. For SEMACHv3 0.01302 (KG250, 30 cm high, default), for SEMACHv2 0.01587}
 }
 \value{
 Formatted raw SEMACHv3 measurement file
 }
 \description{
-A function for the calculation of respiration fluxes from SEMACH files.
+A function for the calculation of respiration fluxes from SEMACH files. (Similar to the way the python version \code{seanadamhdh/SEMACHv3} works).
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
