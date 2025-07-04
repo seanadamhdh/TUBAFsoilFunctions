@@ -4,10 +4,12 @@
 \alias{load_SEMACHv3_file}
 \title{load_SEMACHv3_file}
 \usage{
-load_SEMACHv3_file(path)
+load_SEMACHv3_file(path, version = "v3.2")
 }
 \arguments{
 \item{path}{A file path to a SEMACHv3 .csv measurement file.}
+
+\item{version}{SEMACH version for compatability with header read in. Default v3.2 (most recent systems)}
 }
 \value{
 Formatted raw SEMACHv3 measurement file
