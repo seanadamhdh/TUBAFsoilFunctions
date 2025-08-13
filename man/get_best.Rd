@@ -6,7 +6,8 @@
 \usage{
 get_best(
   model_eval,
-  prefix = "cubist_",
+  type = "cubist",
+  prefix = paste0(type, "_"),
   variable_ = "CORG",
   metric = "test.rmse",
   maximise = F
@@ -15,7 +16,9 @@ get_best(
 \arguments{
 \item{model_eval}{model evaluation object created with evaluate_model_batch()}
 
-\item{prefix}{Model names prefix, usually defines model type}
+\item{type}{Model type, i.e., "cubist", "pls", "svmLinear"...}
+
+\item{prefix}{Model names prefix, usually defines model type. Default is type_}
 
 \item{metric}{evaluation statistic which is used to select best model}
 

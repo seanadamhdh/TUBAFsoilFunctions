@@ -8,10 +8,12 @@
 <url><loc>/reference/calc_flux_manual2.html</loc></url>
 <url><loc>/reference/cm_aggregate.html</loc></url>
 <url><loc>/reference/colorblind_safe_colors.html</loc></url>
+<url><loc>/reference/compute_TOCstock.html</loc></url>
 <url><loc>/reference/conf_95.html</loc></url>
 <url><loc>/reference/evaluate_model_adjusted.html</loc></url>
 <url><loc>/reference/evaluate_model_batch.html</loc></url>
 <url><loc>/reference/eval_SEMACHv3.html</loc></url>
+<url><loc>/reference/fill_missing_layers.html</loc></url>
 <url><loc>/reference/fix_soliTOC_colnames.html</loc></url>
 <url><loc>/reference/get_best.html</loc></url>
 <url><loc>/reference/get_dayfactors.html</loc></url>
