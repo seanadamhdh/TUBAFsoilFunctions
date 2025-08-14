@@ -44,16 +44,16 @@ plot_spc<-function(spc,
 #' @import tidyverse
 #' @export
 get_best=function(model_eval,
-                  type="cubist",
+                  type_="cubist",
                   prefix=paste0(type,"_"),
                   variable_="CORG",
                   metric="test.rmse",
                   maximise=F){
   if(!maximise){
-    out=model_eval%>%filter(variable==variable_)%>%slice(which.min(.[[metric]]))%>%
+    out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.min(.[[metric]]))%>%
       transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
   }else{
-    out=model_eval%>%filter(variable==variable_)%>%slice(which.max(.[[metric]]))%>%
+    out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.max(.[[metric]]))%>%
       transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
   }
   return(out)
