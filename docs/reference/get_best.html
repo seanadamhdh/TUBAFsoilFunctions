@@ -48,7 +48,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_best</span><span class="op">(</span></span>
 <span>  <span class="va">model_eval</span>,</span>
 <span>  type_ <span class="op">=</span> <span class="st">"cubist"</span>,</span>
-<span>  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">type</span>, <span class="st">"_"</span><span class="op">)</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">type_</span>, <span class="st">"_"</span><span class="op">)</span>,</span>
 <span>  variable_ <span class="op">=</span> <span class="st">"CORG"</span>,</span>
 <span>  metric <span class="op">=</span> <span class="st">"test.rmse"</span>,</span>
 <span>  maximise <span class="op">=</span> <span class="cn">F</span></span>
@@ -63,8 +63,16 @@
 <dd><p>model evaluation object created with evaluate_model_batch()</p></dd>
 
 
+<dt id="arg-type-">type_<a class="anchor" aria-label="anchor" href="#arg-type-"></a></dt>
+<dd><p>Model type, i.e., "cubist", "pls", "svmLinear"...</p></dd>
+
+
 <dt id="arg-prefix">prefix<a class="anchor" aria-label="anchor" href="#arg-prefix"></a></dt>
 <dd><p>Model names prefix, usually defines model type. Default is type_</p></dd>
+
+
+<dt id="arg-variable-">variable_<a class="anchor" aria-label="anchor" href="#arg-variable-"></a></dt>
+<dd><p>Variable for which the best model is to be searched</p></dd>
 
 
 <dt id="arg-metric">metric<a class="anchor" aria-label="anchor" href="#arg-metric"></a></dt>
@@ -73,14 +81,6 @@
 
 <dt id="arg-maximise">maximise<a class="anchor" aria-label="anchor" href="#arg-maximise"></a></dt>
 <dd><p>Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.</p></dd>
-
-
-<dt id="arg-type">type<a class="anchor" aria-label="anchor" href="#arg-type"></a></dt>
-<dd><p>Model type, i.e., "cubist", "pls", "svmLinear"...</p></dd>
-
-
-<dt id="arg-variable">variable<a class="anchor" aria-label="anchor" href="#arg-variable"></a></dt>
-<dd><p>Variable for which the best model is to be searched</p></dd>
 
 </dl></div>
     <div class="section level2">

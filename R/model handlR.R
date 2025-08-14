@@ -36,16 +36,16 @@ plot_spc<-function(spc,
 #' `r lifecycle::badge("experimental")`
 #' @note Not yet generalised
 #' @param model_eval model evaluation object created with evaluate_model_batch()
-#' @param type Model type, i.e., "cubist", "pls", "svmLinear"...
+#' @param type_ Model type, i.e., "cubist", "pls", "svmLinear"...
 #' @param prefix Model names prefix, usually defines model type. Default is type_
-#' @param variable Variable for which the best model is to be searched
+#' @param variable_ Variable for which the best model is to be searched
 #' @param metric evaluation statistic which is used to select best model
 #' @param maximise Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.
 #' @import tidyverse
 #' @export
 get_best=function(model_eval,
                   type_="cubist",
-                  prefix=paste0(type,"_"),
+                  prefix=paste0(type_,"_"),
                   variable_="CORG",
                   metric="test.rmse",
                   maximise=F){

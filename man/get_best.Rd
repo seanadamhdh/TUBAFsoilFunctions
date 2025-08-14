@@ -7,7 +7,7 @@
 get_best(
   model_eval,
   type_ = "cubist",
-  prefix = paste0(type, "_"),
+  prefix = paste0(type_, "_"),
   variable_ = "CORG",
   metric = "test.rmse",
   maximise = F
@@ -16,15 +16,15 @@ get_best(
 \arguments{
 \item{model_eval}{model evaluation object created with evaluate_model_batch()}
 
+\item{type_}{Model type, i.e., "cubist", "pls", "svmLinear"...}
+
 \item{prefix}{Model names prefix, usually defines model type. Default is type_}
+
+\item{variable_}{Variable for which the best model is to be searched}
 
 \item{metric}{evaluation statistic which is used to select best model}
 
 \item{maximise}{Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.}
-
-\item{type}{Model type, i.e., "cubist", "pls", "svmLinear"...}
-
-\item{variable}{Variable for which the best model is to be searched}
 }
 \description{
 From a folder containing model object created with scripts used in the BDF-SSL framework, select the best model candidate based on a evaluation metric for a given variable.
