@@ -460,7 +460,6 @@ predict_variable=function(
 #' @param model_type_pattern prefix of model object names
 #' @param new_eval recalculate evaluation stats with evaluate_model_adjusted.R (orginal statistics will still be saved seperately)
 #' @param verbose_iter Print progress updates
-#' @param path_evaluate_model_adjusted Internal argument for sourcing required functions
 #' @import tidyverse
 #' @import progress
 #' @export
@@ -468,8 +467,8 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
                               model_folder="/GitHub/R_main/models/2024 models/PLS_75_25_var_dependent_preProcess",
                               model_type_pattern="pls_",
                               new_eval=F,
-                              verbose_iter=T,
-                              path_evaluate_model_adjusted="/GitHub/BDF/BDF-SSL/3_r_scripts/evaluate_model_adjusted.R"){
+                              verbose_iter=T
+                              ){
   plotlist<-list()
   model_eval_table<-c()
   if(new_eval){
@@ -552,7 +551,6 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
     Obs_Pred_data[[model_name]][["test"]]=test_ObsPred
 
     if(new_eval){
-      source(paste0(root_dir,path_evaluate_model_adjusted))
       new_eval_table=rbind(new_eval_table,data.frame(set=set,
                                                      trans=model$documentation$transformation,
                                                      variable=model$documentation$variable,
@@ -565,15 +563,17 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
     if(verbose_iter){pb$tick()}
   }
 
+  if(new_eval){
   # aggregating
   list(eval=model_eval_table,plots=plotlist,Obs_Pred_data=Obs_Pred_data,new_eval_table=new_eval_table)->test_evaluation
+  }else{
+    # aggregating
+    list(eval=model_eval_table,plots=plotlist,Obs_Pred_data=Obs_Pred_data)->test_evaluation
 
+  }
   # save results
   saveRDS(test_evaluation,paste0(root_dir,model_folder,"/evaluation"))
 }
-
-
-
 
 
 
