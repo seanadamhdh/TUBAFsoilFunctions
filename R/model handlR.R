@@ -45,17 +45,34 @@ plot_spc<-function(spc,
 #' @export
 get_best=function(model_eval,
                   type_="cubist",
-                  prefix=paste0(type_,"_"),
+                  prefix=NULL,
                   variable_="CORG",
                   metric="test.rmse",
                   maximise=F){
-  if(!maximise){
-    out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.min(.[[metric]]))%>%
-      transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
-  }else{
-    out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.max(.[[metric]]))%>%
-      transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+
+  if(is.null(prefix)&!is.null(type_)){
+    prefix=paste0(type_,"_")
+  }else if (!is.null(prefix)&is.null(type_)){
+    prefix=""
   }
+
+  if(!is.null(type_)){
+      if(!maximise){
+        out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.min(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }else{
+        out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.max(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }
+  }else{
+      if(!maximise){
+        out=model_eval%>%filter(variable==variable_)%>%slice(which.min(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }else{
+        out=model_eval%>%filter(variable==variable_)%>%slice(which.max(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }
+    }
   return(out)
 }
 

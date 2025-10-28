@@ -7,7 +7,7 @@
 get_best(
   model_eval,
   type_ = "cubist",
-  prefix = paste0(type_, "_"),
+  prefix = NULL,
   variable_ = "CORG",
   metric = "test.rmse",
   maximise = F
