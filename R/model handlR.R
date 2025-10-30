@@ -36,24 +36,43 @@ plot_spc<-function(spc,
 #' `r lifecycle::badge("experimental")`
 #' @note Not yet generalised
 #' @param model_eval model evaluation object created with evaluate_model_batch()
-#' @param prefix Model names prefix, usually defines model type
-#' @param variable Variable for which the best model is to be searched
+#' @param type_ Model type, i.e., "cubist", "pls", "svmLinear"...
+#' @param prefix Model names prefix, usually defines model type. Default is type_
+#' @param variable_ Variable for which the best model is to be searched
 #' @param metric evaluation statistic which is used to select best model
 #' @param maximise Should the model with the highest metric be selected? E.g., for R2 set to True. Default is False.
 #' @import tidyverse
 #' @export
 get_best=function(model_eval,
-                  prefix="cubist_",
+                  type_="cubist",
+                  prefix=NULL,
                   variable_="CORG",
                   metric="test.rmse",
                   maximise=F){
-  if(!maximise){
-    out=model_eval%>%filter(variable==variable_)%>%slice(which.min(.[[metric]]))%>%
-      transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
-  }else{
-    out=model_eval%>%filter(variable==variable_)%>%slice(which.max(.[[metric]]))%>%
-      transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+
+  if(is.null(prefix)&!is.null(type_)){
+    prefix=paste0(type_,"_")
+  }else if (!is.null(prefix)&is.null(type_)){
+    prefix=""
   }
+
+  if(!is.null(type_)){
+      if(!maximise){
+        out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.min(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }else{
+        out=model_eval%>%filter(variable==variable_,type==type_)%>%slice(which.max(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }
+  }else{
+      if(!maximise){
+        out=model_eval%>%filter(variable==variable_)%>%slice(which.min(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }else{
+        out=model_eval%>%filter(variable==variable_)%>%slice(which.max(.[[metric]]))%>%
+          transmute(out=paste0(prefix,set,"-",trans,"-",variable))%>%pull(out)
+      }
+    }
   return(out)
 }
 
@@ -458,7 +477,6 @@ predict_variable=function(
 #' @param model_type_pattern prefix of model object names
 #' @param new_eval recalculate evaluation stats with evaluate_model_adjusted.R (orginal statistics will still be saved seperately)
 #' @param verbose_iter Print progress updates
-#' @param path_evaluate_model_adjusted Internal argument for sourcing required functions
 #' @import tidyverse
 #' @import progress
 #' @export
@@ -466,8 +484,8 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
                               model_folder="/GitHub/R_main/models/2024 models/PLS_75_25_var_dependent_preProcess",
                               model_type_pattern="pls_",
                               new_eval=F,
-                              verbose_iter=T,
-                              path_evaluate_model_adjusted="/GitHub/BDF/BDF-SSL/3_r_scripts/evaluate_model_adjusted.R"){
+                              verbose_iter=T
+                              ){
   plotlist<-list()
   model_eval_table<-c()
   if(new_eval){
@@ -550,7 +568,6 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
     Obs_Pred_data[[model_name]][["test"]]=test_ObsPred
 
     if(new_eval){
-      source(paste0(root_dir,path_evaluate_model_adjusted))
       new_eval_table=rbind(new_eval_table,data.frame(set=set,
                                                      trans=model$documentation$transformation,
                                                      variable=model$documentation$variable,
@@ -563,15 +580,17 @@ evaluate_model_batch=function(root_dir="C:/Users/adam/Documents",
     if(verbose_iter){pb$tick()}
   }
 
+  if(new_eval){
   # aggregating
   list(eval=model_eval_table,plots=plotlist,Obs_Pred_data=Obs_Pred_data,new_eval_table=new_eval_table)->test_evaluation
+  }else{
+    # aggregating
+    list(eval=model_eval_table,plots=plotlist,Obs_Pred_data=Obs_Pred_data)->test_evaluation
 
+  }
   # save results
   saveRDS(test_evaluation,paste0(root_dir,model_folder,"/evaluation"))
 }
-
-
-
 
 
 
