@@ -11,4 +11,5 @@ colorblind_safe_colors()
 }
 \description{
 https://jrnold.github.io/ggthemes/reference/colorblind.html
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

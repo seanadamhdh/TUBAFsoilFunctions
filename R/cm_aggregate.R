@@ -2,10 +2,10 @@
 
 
 
-#' cm-wise aggregation of soil data
-#'
+#' @title cm-wise aggregation of soil data
 #' @description Dataset containing sampling depth (upper+lower) and numeric values can be aggregated to equal depth increments.
 #' Depths and `res_out` should be stated in meters.
+#' `r lifecycle::badge("experimental")`
 #' @param dataset An R tibble or data.frame
 #' @param depth_top_col Upper sampling depth column name
 #' @param depth_bottom_col Lower sampling depth column name

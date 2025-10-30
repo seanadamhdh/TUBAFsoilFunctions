@@ -34,4 +34,5 @@ sampled randomly. To select specific spc, filter dataset beforehand.}
 \description{
 Simple plotting interface for spc datasets created with OPUSraw_to_preprocessed(). Note: Large amount of spc might be laggy.
 Subset data beforehand or set sample size to smaller number for random sampling.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }

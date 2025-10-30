@@ -14,4 +14,5 @@ converted to respective other unit.
 }
 \description{
 Wavenumber to wavelength conversion. Works both ways (wn-wl, wl-wn).
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

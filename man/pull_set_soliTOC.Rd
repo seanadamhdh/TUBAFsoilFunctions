@@ -24,11 +24,11 @@ pull_set_soliTOC(
 
 \item{ID_col_set}{Which column contains the identifier for the sample selection? Default is "Name"}
 
-\item{set_id}{String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_set` by str_detect}
+\item{set_id}{String or vector of strings which represent the unique identifier(s) that are searched for in \code{ID_col_set} by str_detect}
 
 \item{ID_col_std}{Which columns contain the identifier for the standard selection? Default is "Name"}
 
-\item{std_id}{String or vector of strings which represent the unique identifier(s) that are searched for in `ID_col_std` by str_detect. Default is "caco3".}
+\item{std_id}{String or vector of strings which represent the unique identifier(s) that are searched for in \code{ID_col_std} by str_detect. Default is "caco3".}
 
 \item{Memo_col_set}{Which column contains the additional Memo identifier?}
 
@@ -36,7 +36,7 @@ pull_set_soliTOC(
 
 \item{std_value_col}{Which column containes the measurements}
 
-\item{actual}{True value (concentration). Default is 12 (wt-%) TC for caco3.}
+\item{actual}{True value (concentration). Default is 12 (wt-\%) TC for caco3.}
 
 \item{keep_batch}{Should the column containing aggregation information be kept? Default=F}
 
@@ -47,4 +47,5 @@ A tibble or data.frame containing the dayfactor corrected C-fractions for the sa
 }
 \description{
 Function for the correction and aggregation of SoliTOC measurements. Loads a raw excel file as exported from soliTOC software. Calculates and applies dayfactor correction based on standard measurements. Select and aggregate samples based on identifer string(s).
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

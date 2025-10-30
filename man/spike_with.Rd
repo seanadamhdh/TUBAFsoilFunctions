@@ -23,4 +23,5 @@ This function can be used to approximately calculate the amount of pure stable i
 to be added to a reference solution to reach a desired change in delta permil isotope abundance.
 Uses the assumption that isotope tracer amount is negligible compared to light fraction and
 that the weight difference between heavy and light isotopes is also negligable.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

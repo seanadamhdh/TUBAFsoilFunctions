@@ -68,6 +68,7 @@ and val_stats containing evaluation metrics. !!! CURRENTLY USES LOCAL FUNCTION f
 Splits dataset into train/test set and runs multiple calibrations using increasing number of observartions from training data.
 Model accuracy is calculated for each created model using the hold-out test set.
 Can be used to assess effect of sample size on model performance. Should support most (numeric) regression models implemented in caret (no guarantees though - not tested)
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 In future, extract kmeans sampling function as standalone

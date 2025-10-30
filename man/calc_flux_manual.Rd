@@ -28,6 +28,7 @@ calc_flux_manual(
 }
 \description{
 Legacy flux calculation for PriEco8800 incubator. This function might be unstable. Use at own risk.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise

@@ -40,4 +40,8 @@ load_pri8800_data(
 }
 \description{
 load different files created by Pri8800 (both inidvidual slopes and final output files).
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+}
+\note{
+Known issue: First sample of a run is not evaluated.
 }

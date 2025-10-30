@@ -14,6 +14,7 @@ If not specified, function will catch trans_rev from models$...$documentation$tr
 }
 \description{
 validation of model list output created by train_sample_size()
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 install additional packages for specific model types manually

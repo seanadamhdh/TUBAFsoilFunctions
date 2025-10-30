@@ -59,5 +59,6 @@ If return=T, the final object containing the differently pre-processed spectra i
 }
 \description{
 This function loads a set of raw opus spectra files into R, processes them into a nested tibble format (propectr-friendly),
-and applies several pre-processing tequnices.
+and applies several pre-processing techniques.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#stable}{\figure{lifecycle-stable.svg}{options: alt='[Stable]'}}}{\strong{[Stable]}}
 }

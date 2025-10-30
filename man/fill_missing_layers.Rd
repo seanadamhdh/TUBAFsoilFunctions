@@ -34,11 +34,11 @@ fill_missing_layers(
 }
 \value{
 A data frame with interpolated horizon layers added where gaps were detected within the target depth range.
-        New interpolated layers will have estimated `TOCstock` values based on the average stock density of adjacent layers.
+New interpolated layers will have estimated \code{TOCstock} values based on the average stock density of adjacent layers.
 }
 \description{
 This function fills missing depth intervals within a specified range by
-interpolating `TOCstock` values using linear approximation between adjacent horizons.
+interpolating \code{TOCstock} values using linear approximation between adjacent horizons.
 }
 \examples{
 df_filled <- fill_missing_layers(df, depth_from = 0, depth_to = 0.3,

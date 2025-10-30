@@ -9,9 +9,7 @@ evaluate_model_batch(
   model_folder = "/GitHub/R_main/models/2024 models/PLS_75_25_var_dependent_preProcess",
   model_type_pattern = "pls_",
   new_eval = F,
-  verbose_iter = T,
-  path_evaluate_model_adjusted =
-    "/GitHub/BDF/BDF-SSL/3_r_scripts/evaluate_model_adjusted.R"
+  verbose_iter = T
 )
 }
 \arguments{
@@ -24,12 +22,11 @@ evaluate_model_batch(
 \item{new_eval}{recalculate evaluation stats with evaluate_model_adjusted.R (orginal statistics will still be saved seperately)}
 
 \item{verbose_iter}{Print progress updates}
-
-\item{path_evaluate_model_adjusted}{Internal argument for sourcing required functions}
 }
 \description{
 Batch model runs evaluation aggregation
 Currently only supports testset data (no gt300)
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 evaluate_model_adjusted source path is legacy. Change in future

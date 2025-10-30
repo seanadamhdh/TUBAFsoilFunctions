@@ -1,6 +1,7 @@
 
 #' @title label_creator
 #' @description Soil lab labels generator. Multi-digit letter codes.
+#' `r lifecycle::badge("stable")`
 #' @param dataset Either vector or data.frame / tibble structure. length(dataset) or nrwo(dataset) ID labels will be created respectively.
 #' @param origin Set an initial string which will be identical for all ID.
 #' @param digits Total number of digits of the ID, including origin.

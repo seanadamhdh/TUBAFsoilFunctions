@@ -34,6 +34,7 @@ calc_flux_manual2(
 }
 \description{
 Manual flux calculation for PriEco8800 incubator.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \note{
 optimise potentially: Function for individual meas, in main function, group by run,round,sample; summarise
